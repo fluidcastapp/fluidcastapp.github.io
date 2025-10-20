@@ -3,51 +3,484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FluidCast</title>
+    <meta name="description" content="FluidCast - Your podcast experience, reimagined. Listen, sync, and enjoy podcasts across your devices.">
+    <title>FluidCast – Your Favourite Podcasts Everywhere</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgb(44, 56, 80) 0%, rgb(29, 40, 58) 100%);
             color: white;
-            min-height: 100vh;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
-        
-        .container {
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        .logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            background: #fff;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgb(29, 40, 58) 0%, rgb(15, 23, 40) 100%);
+            color: white;
+            padding: 120px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: rgb(29, 40, 58);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 4rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
             text-align: center;
             padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        
-        h1 {
-            font-size: 4rem;
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
             margin-bottom: 1rem;
-            font-weight: 300;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
-        p {
+
+        .feature-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            margin-bottom: 1rem;
+            color: #2d3748;
         }
-        
-        .subtitle {
-            font-size: 1.2rem;
+        .premium-label {
+            background: linear-gradient(90deg, #ffd700 0%, #ffb700 100%);
+            color: #2d3748;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border-radius: 6px;
+            padding: 2px 8px;
+            margin-left: 8px;
+            vertical-align: middle;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+
+        .feature-card p {
+            color: #718096;
+            line-height: 1.8;
+        }
+
+        /* Platforms Section */
+        .platforms {
+            background: #f7fafc;
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .platform-icons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .platform-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .platform-item .icon {
+            font-size: 4rem;
+        }
+
+        .platform-item p {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 80px 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .screenshots-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .screenshot {
+            flex: 0 1 350px;
+            transition: transform 0.3s;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.05);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+        }
+
+        .screenshot-caption {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgb(29, 40, 58) 0%, rgb(15, 23, 40) 100%);
+            color: white;
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
             opacity: 0.8;
-            font-weight: 300;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshots-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .screenshot {
+                max-width: 300px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>FluidCast</h1>
-        <p>Hello World!</p>
-        <div class="subtitle">Your podcast experience, reimagined.</div>
-    </div>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="fluidcasticonweb.png" alt="FluidCast Logo">
+                FluidCast
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#platforms">Platforms</a></li>
+                <li><a href="#download">Download</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+    <h1>Your Favourite Podcasts Everywhere</h1>
+        <p>Listen, sync, and enjoy your favorite podcasts seamlessly across all your devices</p>
+        <div class="cta-buttons">
+            <a href="#download" class="btn btn-primary">Download Now</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title">Powerful Features</h2>
+        <p class="section-subtitle">Everything you need for the perfect podcast experience</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎧</div>
+                <h3>Seamless Playback</h3>
+                <p>Enjoy uninterrupted listening with advanced audio playback controls and background support</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">☁️</div>
+                <h3>Cloud Sync <span class="premium-label">Premium</span></h3>
+                <p>Your subscriptions, playback position, and settings sync automatically across all your devices</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📥</div>
+                <h3>Offline Downloads</h3>
+                <p>Download episodes for offline listening and never miss your favorite shows on the go</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Smart Search</h3>
+                <p>Discover new podcasts with powerful search</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Sleep Timer <span class="premium-label">Premium</span></h3>
+                <p>Fall asleep to your favorite podcasts with customizable sleep timer controls</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Beautiful Design</h3>
+                <p>Experience a clean, modern interface designed for iOS with intuitive navigation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots">
+        <h2 class="section-title">See FluidCast in Action</h2>
+        <p class="section-subtitle">Beautiful, intuitive design that makes podcast listening a joy</p>
+        
+        <div class="screenshots-container">
+            <div class="screenshot">
+                <img src="https://upload.wikimedia.org/wikipedia/en/9/9b/IOS_26_Homescreen.png" alt="FluidCast Home Screen">
+                <p class="screenshot-caption">Discover & Browse</p>
+            </div>
+            <div class="screenshot">
+                <img src="https://upload.wikimedia.org/wikipedia/en/9/9b/IOS_26_Homescreen.png" alt="FluidCast Player">
+                <p class="screenshot-caption">Beautiful Player</p>
+            </div>
+            <div class="screenshot">
+                <img src="https://upload.wikimedia.org/wikipedia/en/9/9b/IOS_26_Homescreen.png" alt="FluidCast Library">
+                <p class="screenshot-caption">Your Library</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section id="platforms" class="platforms">
+        <h2 class="section-title">Available on Your Favorite Devices</h2>
+        <p class="section-subtitle">FluidCast works seamlessly across iOS and watchOS</p>
+        
+        <div class="platform-icons">
+            <div class="platform-item">
+                <div class="icon">📱</div>
+                <p>iPhone</p>
+            </div>
+            <div class="platform-item">
+                <div class="icon">⌚</div>
+                <p>Apple Watch <span class="premium-label">Premium</span></p>
+            </div>
+            <div class="platform-item">
+                <div class="icon">💻</div>
+                <p>Coming Soon</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="download" class="cta-section">
+        <h2>Ready to Get Started?</h2>
+        <p>Download FluidCast today and transform your podcast listening experience</p>
+        <a href="#" class="btn btn-primary">Download on the App Store</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Support</a>
+            <a href="#">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2025 FluidCast. All rights reserved.</p>
+    </footer>
 </body>
 </html>
