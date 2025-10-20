@@ -74,6 +74,36 @@
             opacity: 0.8;
         }
 
+        /* Burger Menu */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, rgb(29, 40, 58) 0%, rgb(15, 23, 40) 100%);
@@ -269,6 +299,94 @@
             color: #2d3748;
         }
 
+        /* Roadmap Section */
+        .roadmap {
+            padding: 60px 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .roadmap-timeline {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .roadmap-phase {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .roadmap-phase:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .roadmap-phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .roadmap-phase h3 {
+            font-size: 1.3rem;
+            color: #2d3748;
+            margin: 0;
+        }
+
+        .roadmap-status {
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .status-launched {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .status-coming-soon {
+            background: #bee3f8;
+            color: #2c5282;
+        }
+
+        .status-planned {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .roadmap-platforms {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f7fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .platform-icon-small {
+            font-size: 1.2rem;
+        }
+
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, rgb(29, 40, 58) 0%, rgb(15, 23, 40) 100%);
@@ -335,9 +453,37 @@
                 width: 32px;
             }
 
+            .burger-menu {
+                display: flex;
+            }
+
             .nav-links {
-                gap: 0.5rem;
-                font-size: 0.85rem;
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: calc(100vh - 60px);
+                background: linear-gradient(135deg, rgb(44, 56, 80) 0%, rgb(29, 40, 58) 100%);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
             }
 
             .hero h1 {
@@ -382,12 +528,7 @@
             }
 
             .nav-links {
-                gap: 0.3rem;
-                font-size: 0.75rem;
-            }
-
-            .nav-links a {
-                padding: 0.3rem;
+                width: 80%;
             }
         }
     </style>
@@ -400,9 +541,15 @@
                 <img src="fluidcasticonweb.png" alt="FluidCast Logo">
                 FluidCast
             </div>
-            <ul class="nav-links">
+            <div class="burger-menu" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#platforms">Platforms</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="#download">Download</a></li>
             </ul>
         </nav>
@@ -504,6 +651,86 @@
         </div>
     </section>
 
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="roadmap">
+        <h2 class="section-title">Roadmap</h2>
+        <p class="section-subtitle">Our journey to bring FluidCast to every platform</p>
+        
+        <div class="roadmap-timeline">
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <h3>🚀 Launch</h3>
+                    <span class="roadmap-status status-launched">Available Now</span>
+                </div>
+                <div class="roadmap-platforms">
+                    <span class="platform-badge">
+                        <span class="platform-icon-small">📱</span>
+                        iPhone
+                    </span>
+                    <span class="platform-badge">
+                        <span class="platform-icon-small">📱</span>
+                        iPad
+                    </span>
+                    <span class="platform-badge">
+                        <span class="platform-icon-small">💻</span>
+                        Mac
+                    </span>
+                    <span class="platform-badge">
+                        <span class="platform-icon-small">⌚</span>
+                        Apple Watch
+                    </span>
+                </div>
+            </div>
+
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <h3>📅 Phase 2</h3>
+                    <span class="roadmap-status status-coming-soon">Coming Soon</span>
+                </div>
+                <div class="roadmap-platforms">
+                    <span class="platform-badge">
+                        <span class="platform-icon-small">🤖</span>
+                        Android
+                    </span>
+                    <span class="platform-badge">
+                        <span class="platform-icon-small">🪟</span>
+                        Windows
+                    </span>
+                    <span class="platform-badge">
+                        <span class="platform-icon-small">🐧</span>
+                        Linux
+                    </span>
+                </div>
+            </div>
+
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <h3>📺 Phase 3</h3>
+                    <span class="roadmap-status status-planned">Planned</span>
+                </div>
+                <div class="roadmap-platforms">
+                    <span class="platform-badge">
+                        <span class="platform-icon-small">📺</span>
+                        Apple TV
+                    </span>
+                </div>
+            </div>
+
+            <div class="roadmap-phase">
+                <div class="roadmap-phase-header">
+                    <h3>🌐 Phase 4</h3>
+                    <span class="roadmap-status status-planned">Planned</span>
+                </div>
+                <div class="roadmap-platforms">
+                    <span class="platform-badge">
+                        <span class="platform-icon-small">🌐</span>
+                        Web App
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section id="download" class="cta-section">
         <h2>Ready to Get Started?</h2>
@@ -521,5 +748,33 @@
         </div>
         <p class="copyright">&copy; 2025 FluidCast. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Burger menu functionality
+        const burgerMenu = document.getElementById('burger-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        const navItems = navLinks.querySelectorAll('a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!burgerMenu.contains(e.target) && !navLinks.contains(e.target)) {
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
