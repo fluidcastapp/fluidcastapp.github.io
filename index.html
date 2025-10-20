@@ -230,6 +230,136 @@
             line-height: 1.8;
         }
 
+        /* Pricing Section */
+        .pricing {
+            background: #f7fafc;
+            padding: 80px 2rem;
+            text-align: center;
+        }
+
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .premium-card {
+            border: 2px solid #ffd700;
+            position: relative;
+        }
+
+        .premium-card::before {
+            content: "Recommended";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #ffd700 0%, #ffb700 100%);
+            color: #2d3748;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .pricing-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d3748;
+            line-height: 1;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: #718096;
+            margin-top: 0.5rem;
+        }
+
+        .trial-info {
+            font-size: 0.9rem;
+            color: #22543d;
+            background: #c6f6d5;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-top: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .features-list {
+            text-align: left;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #2d3748;
+        }
+
+        .check {
+            color: #22543d;
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .premium-check {
+            color: #ffd700;
+        }
+
+        .pricing-note {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            border-left: 4px solid #ffd700;
+        }
+
+        .pricing-note p {
+            color: #2d3748;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
         /* Platforms Section */
         .platforms {
             background: #f7fafc;
@@ -440,6 +570,12 @@
             font-size: 0.9rem;
         }
 
+        .contact-email {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -504,6 +640,16 @@
                 grid-template-columns: 1fr;
             }
 
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card {
+                min-width: 280px;
+                max-width: 350px;
+            }
+
             .screenshots-container {
                 flex-direction: column;
                 align-items: center;
@@ -550,6 +696,7 @@
             </div>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Premium</a></li>
                 <li><a href="#platforms">Platforms</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="#download">Download</a></li>
@@ -608,6 +755,73 @@
                 <h3>Beautiful Design</h3>
                 <p>Experience a clean, modern interface designed for iOS with intuitive navigation</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Choose Your Experience</h2>
+        <p class="section-subtitle">Start free and upgrade to unlock premium features</p>
+        
+        <div class="pricing-container">
+            <div class="pricing-card free-card">
+                <div class="pricing-header">
+                    <h3>FluidCast Free</h3>
+                    <div class="price">£0</div>
+                    <div class="price-period">Forever</div>
+                </div>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>Standalone podcast player</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>Offline downloads</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>Background playback</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pricing-card premium-card">
+                <div class="pricing-header">
+                    <h3>FluidCast Premium</h3>
+                    <div class="price">£1.99</div>
+                    <div class="price-period">per month</div>
+                    <div class="trial-info">1 month free trial</div>
+                </div>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <span class="check premium-check">✓</span>
+                        <span>Everything in Free, plus:</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check premium-check">✓</span>
+                        <span>Cloud sync across all supported devices*</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check premium-check">✓</span>
+                        <span>Advanced playback queue editing</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check premium-check">✓</span>
+                        <span>Sleep timer</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check premium-check">✓</span>
+                        <span>Apple Watch support</span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pricing-note">
+            <p><strong>Note:</strong> Premium subscriptions are currently managed within the app. Download FluidCast and subscribe to Premium through the in-app purchase system.</p>
+            <p style="margin-top: 0.75rem; font-size: 0.9rem; color: #718096;"><em>*See roadmap for current device support availability.</em></p>
         </div>
     </section>
 
@@ -736,10 +950,9 @@
         <div class="footer-links">
             <a href="privacy.html">Privacy Policy</a>
             <a href="terms.html">Terms of Service</a>
-            <a href="#">Support</a>
-            <a href="#">Contact</a>
         </div>
         <p class="copyright">&copy; 2025 FluidCast. All rights reserved.</p>
+        <p class="contact-email">Contact: hello@fluidcast.app</p>
     </footer>
 
     <script>
