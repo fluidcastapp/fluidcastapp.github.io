@@ -8,6 +8,7 @@
     <link rel="icon" type="image/jpeg" href="images/fluidcasticonweb.jpg">
     <link rel="apple-touch-icon" href="images/fluidcasticonweb.jpg">
     <style>
+        html { scroll-behavior: smooth; }
         * {
             margin: 0;
             padding: 0;
@@ -544,6 +545,8 @@
             color: white;
             padding: 3rem 2rem 1.5rem;
             text-align: center;
+            /* Ensure anchor targets aren't hidden under the fixed header */
+            scroll-margin-top: 80px;
         }
 
         .footer-links {
@@ -947,13 +950,14 @@
     -->
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="footer-links">
+            <a href="#contact">Contact</a>
             <a href="privacy.html">Privacy Policy</a>
             <a href="terms.html">Terms of Service</a>
         </div>
         <p class="copyright">&copy; 2025 FluidCast. All rights reserved.</p>
-        <p class="contact-email">Contact:  support@fluidcastapp.com</p>
+        <p class="contact-email">Contact: <a href="mailto:support@fluidcastapp.com" style="color:inherit; text-decoration:underline;">support@fluidcastapp.com</a></p>
     </footer>
 
     <script>
