@@ -113,21 +113,21 @@
         .hero {
             background: linear-gradient(135deg, rgb(29, 40, 58) 0%, rgb(15, 23, 40) 100%);
             color: white;
-            padding: 120px 2rem 80px;
+            padding: 80px 2rem 50px;
             text-align: center;
             margin-top: 60px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             line-height: 1.2;
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
             opacity: 0.95;
             max-width: 600px;
             margin-left: auto;
@@ -167,36 +167,29 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        /* Features Section */
-        .features {
-            padding: 50px 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
             color: #2d3748;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #718096;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         .feature-card {
             text-align: center;
-            padding: 1.5rem;
+            padding: 1.25rem;
             border-radius: 12px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -207,16 +200,16 @@
         }
 
         .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
 
         .feature-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
             color: #2d3748;
         }
-        .premium-label {
+        .pro-label {
             background: linear-gradient(90deg, #ffd700 0%, #ffb700 100%);
             color: #2d3748;
             font-size: 0.85rem;
@@ -230,13 +223,14 @@
 
         .feature-card p {
             color: #718096;
-            line-height: 1.8;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* Pricing Section */
         .pricing {
             background: #f7fafc;
-            padding: 80px 2rem;
+            padding: 40px 2rem;
             text-align: center;
         }
 
@@ -252,7 +246,7 @@
         .pricing-card {
             background: white;
             border-radius: 16px;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             flex: 1;
             min-width: 300px;
@@ -266,12 +260,12 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        .premium-card {
+        .pro-card {
             border: 2px solid #ffd700;
             position: relative;
         }
 
-        .premium-card::before {
+        .pro-card::before {
             content: "Recommended";
             position: absolute;
             top: -12px;
@@ -287,8 +281,8 @@
         }
 
         .pricing-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
             border-bottom: 1px solid #e2e8f0;
         }
 
@@ -299,7 +293,7 @@
         }
 
         .price {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #2d3748;
             line-height: 1;
@@ -343,14 +337,14 @@
             flex-shrink: 0;
         }
 
-        .premium-check {
+        .pro-check {
             color: #ffd700;
         }
 
         .pricing-note {
             max-width: 600px;
-            margin: 3rem auto 0;
-            padding: 1.5rem;
+            margin: 2rem auto 0;
+            padding: 1rem;
             background: rgba(255, 255, 255, 0.8);
             border-radius: 12px;
             border-left: 4px solid #ffd700;
@@ -366,7 +360,7 @@
         /* Platforms Section */
         .platforms {
             background: #f7fafc;
-            padding: 80px 2rem;
+            padding: 40px 2rem;
             text-align: center;
         }
 
@@ -375,7 +369,7 @@
             justify-content: center;
             gap: 3rem;
             flex-wrap: wrap;
-            margin-top: 3rem;
+            margin-top: 1.5rem;
         }
 
         .platform-item {
@@ -396,7 +390,7 @@
 
         /* Screenshots Section */
         .screenshots {
-            padding: 80px 2rem;
+            padding: 40px 2rem;
             max-width: 1400px;
             margin: 0 auto;
             text-align: center;
@@ -405,14 +399,15 @@
         .screenshots-container {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 3rem;
+            margin-top: 1.5rem;
         }
 
         .screenshot {
-            flex: 0 1 350px;
+            flex: 0 1 180px;
             transition: transform 0.3s;
+            cursor: pointer;
         }
 
         .screenshot:hover {
@@ -422,37 +417,100 @@
         .screenshot img {
             width: 100%;
             height: auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
             border: 1px solid #e2e8f0;
         }
 
+        /* Screenshot Modal */
+        .screenshot-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        .screenshot-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .screenshot-modal-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            margin: auto;
+            animation: zoomIn 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .screenshot-modal-content img {
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .screenshot-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .screenshot-modal-close:hover {
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         .screenshot-caption {
-            margin-top: 1rem;
-            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: #2d3748;
         }
 
         /* Roadmap Section */
         .roadmap {
-            padding: 60px 2rem;
-            max-width: 1000px;
+            padding: 40px 2rem;
+            max-width: 1400px;
             margin: 0 auto;
             text-align: center;
         }
 
         .roadmap-timeline {
-            margin-top: 3rem;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .roadmap-phase {
             background: white;
             border-radius: 12px;
-            padding: 1.5rem 2rem;
+            padding: 1.25rem 1.5rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.08);
             text-align: left;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -467,13 +525,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             flex-wrap: wrap;
             gap: 0.5rem;
         }
 
         .roadmap-phase h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #2d3748;
             margin: 0;
         }
@@ -526,18 +584,18 @@
         .cta-section {
             background: linear-gradient(135deg, rgb(29, 40, 58) 0%, rgb(15, 23, 40) 100%);
             color: white;
-            padding: 80px 2rem;
+            padding: 40px 2rem;
             text-align: center;
         }
 
         .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
         .cta-section p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
             opacity: 0.95;
         }
 
@@ -545,7 +603,7 @@
         footer {
             background: #2d3748;
             color: white;
-            padding: 3rem 2rem 1.5rem;
+            padding: 2rem 2rem 1rem;
             text-align: center;
             /* Ensure anchor targets aren't hidden under the fixed header */
             scroll-margin-top: 80px;
@@ -555,7 +613,7 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
         }
 
@@ -582,6 +640,16 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .screenshot {
+                flex: 0 1 150px;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 padding: 0 1rem;
@@ -645,6 +713,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .roadmap-timeline {
+                grid-template-columns: 1fr;
+            }
+
             .pricing-container {
                 flex-direction: column;
                 align-items: center;
@@ -655,13 +727,8 @@
                 max-width: 350px;
             }
 
-            .screenshots-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
             .screenshot {
-                max-width: 300px;
+                flex: 0 1 150px;
             }
         }
 
@@ -701,7 +768,7 @@
             </div>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Premium</a></li>
+                <li><a href="#pricing">Pro</a></li>
                 <li><a href="#platforms">Platforms</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="https://apps.apple.com/us/app/fluidcast/id6754508580">Download</a></li>
@@ -725,15 +792,15 @@
         <p class="section-subtitle">Beautiful, intuitive design that makes podcast listening a joy</p>
         
         <div class="screenshots-container">
-            <div class="screenshot">
+            <div class="screenshot" onclick="openScreenshotModal('images/search.jpg', 'Discover & Browse')">
                 <img src="images/search.jpg" alt="FluidCast Home Screen">
                 <p class="screenshot-caption">Discover & Browse</p>
             </div>
-            <div class="screenshot">
+            <div class="screenshot" onclick="openScreenshotModal('images/player.jpg', 'Beautiful Player')">
                 <img src="images/player.jpg" alt="FluidCast Player">
                 <p class="screenshot-caption">Beautiful Player</p>
             </div>
-            <div class="screenshot">
+            <div class="screenshot" onclick="openScreenshotModal('images/library.jpg', 'Your Library')">
                 <img src="images/library.jpg" alt="FluidCast Library">
                 <p class="screenshot-caption">Your Library</p>
             </div>
@@ -754,7 +821,7 @@
             
             <div class="feature-card">
                 <div class="feature-icon">☁️</div>
-                <h3>Cloud Sync <span class="premium-label">Premium</span></h3>
+                <h3>Cloud Sync <span class="pro-label">Pro</span></h3>
                 <p>Your subscriptions, playback position, and settings sync automatically across all your devices</p>
             </div>
             
@@ -772,7 +839,7 @@
             
             <div class="feature-card">
                 <div class="feature-icon">⏰</div>
-                <h3>Sleep Timer <span class="premium-label">Premium</span></h3>
+                <h3>Sleep Timer <span class="pro-label">Pro</span></h3>
                 <p>Fall asleep to your favorite podcasts with customizable sleep timer controls</p>
             </div>
             
@@ -780,6 +847,7 @@
                 <div class="feature-icon">🎨</div>
                 <h3>Beautiful Design</h3>
                 <p>Experience a clean, modern interface designed for iOS with intuitive navigation</p>
+                </div>
             </div>
         </div>
     </section>
@@ -787,7 +855,7 @@
     <!-- Pricing Section -->
     <section id="pricing" class="pricing">
         <h2 class="section-title">Choose Your Experience</h2>
-        <p class="section-subtitle">Start free and upgrade to unlock premium features</p>
+        <p class="section-subtitle">Start free and upgrade to unlock pro features</p>
         
         <div class="pricing-container">
             <div class="pricing-card free-card">
@@ -812,32 +880,32 @@
                 </div>
             </div>
 
-            <div class="pricing-card premium-card">
+            <div class="pricing-card pro-card">
                 <div class="pricing-header">
-                    <h3>FluidCast Premium</h3>
+                    <h3>FluidCast Pro</h3>
                     <div class="price">£2.49</div>
                     <div class="price-period">per month</div>
                     <div class="trial-info">1 month free trial</div>
                 </div>
                 <div class="features-list">
                     <div class="feature-item">
-                        <span class="check premium-check">✓</span>
+                        <span class="check pro-check">✓</span>
                         <span>Everything in Free, plus:</span>
                     </div>
                     <div class="feature-item">
-                        <span class="check premium-check">✓</span>
+                        <span class="check pro-check">✓</span>
                         <span>Cloud sync across all supported devices*</span>
                     </div>
                     <div class="feature-item">
-                        <span class="check premium-check">✓</span>
+                        <span class="check pro-check">✓</span>
                         <span>Advanced playback queue editing</span>
                     </div>
                     <div class="feature-item">
-                        <span class="check premium-check">✓</span>
+                        <span class="check pro-check">✓</span>
                         <span>Sleep timer</span>
                     </div>
                     <div class="feature-item">
-                        <span class="check premium-check">✓</span>
+                        <span class="check pro-check">✓</span>
                         <span>Apple Watch support</span>
                     </div>
                     </div>
@@ -846,7 +914,7 @@
         </div>
         
         <div class="pricing-note">
-            <p><strong>Note:</strong> Premium subscriptions are currently managed within the app. Download FluidCast and subscribe to Premium through the in-app purchase system.</p>
+            <p><strong>Note:</strong> Pro subscriptions are currently managed within the app. Download FluidCast and subscribe to Pro through the in-app purchase system.</p>
             <p style="margin-top: 0.75rem; font-size: 0.9rem; color: #718096;"><em>*See roadmap for current device support availability.</em></p>
         </div>
     </section>
@@ -864,7 +932,7 @@
             </div>
             <div class="platform-item">
                 <div class="icon">⌚</div>
-                <p>Apple Watch <span class="premium-label">Premium</span></p>
+                <p>Apple Watch <span class="pro-label">Pro</span></p>
             </div>
             <div class="platform-item">
                 <div class="icon">💻</div>
@@ -952,6 +1020,14 @@
     </section>
     -->
 
+    <!-- Screenshot Modal -->
+    <div id="screenshot-modal" class="screenshot-modal">
+        <span class="screenshot-modal-close" onclick="closeScreenshotModal()">&times;</span>
+        <div class="screenshot-modal-content">
+            <img id="modal-image" src="" alt="">
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="footer-links">
@@ -987,6 +1063,37 @@
             if (!burgerMenu.contains(e.target) && !navLinks.contains(e.target)) {
                 burgerMenu.classList.remove('active');
                 navLinks.classList.remove('active');
+            }
+        });
+
+        // Screenshot modal functionality
+        function openScreenshotModal(imageSrc, caption) {
+            const modal = document.getElementById('screenshot-modal');
+            const modalImage = document.getElementById('modal-image');
+            modalImage.src = imageSrc;
+            modalImage.alt = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeScreenshotModal() {
+            const modal = document.getElementById('screenshot-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close modal when clicking outside the image
+        const screenshotModal = document.getElementById('screenshot-modal');
+        screenshotModal.addEventListener('click', (e) => {
+            if (e.target === screenshotModal) {
+                closeScreenshotModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeScreenshotModal();
             }
         });
     </script>
