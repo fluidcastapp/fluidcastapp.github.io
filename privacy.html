@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluidCast Privacy Policy</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #f7fafc;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 60px auto 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(29,40,58,0.08);
+            padding: 2.5rem 2rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #293a4d;
+        }
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            color: #293a4d;
+        }
+        p, ul {
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+        }
+        ul {
+            padding-left: 1.2rem;
+        }
+        a {
+            color: #667eea;
+            text-decoration: underline;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Back to Home</a>
+        <h1>FluidCast Privacy Policy</h1>
+        <p><em>Last Updated: 11 November 2025</em></p>
+
+        <h2>1. Overview</h2>
+        <p>FluidCast ("the App") is a privacy-respecting podcast application that focuses on minimal data collection. We only collect what is necessary to:</p>
+        <ul>
+            <li>Authenticate users (Supabase Authentication)</li>
+            <li>Sync podcast subscriptions and playback progress across devices (Supabase PostgreSQL Database)</li>
+            <li>Send verification and notification emails (Resend)</li>
+            <li>Measure high-level daily active usage (a single analytics event per day per device - Firebase Analytics)</li>
+            <li>Maintain app reliability and diagnose critical crashes (Firebase Crashlytics)</li>
+            <li>Manage premium subscription entitlements (RevenueCat)</li>
+        </ul>
+        <p>We do <strong>not</strong> use third-party advertising SDKs, behavioral tracking, or broad engagement analytics. We do <strong>not</strong> sell your personal data.</p>
+
+        <h2>2. Data We Collect & Process</h2>
+        <p>Below is a breakdown of data categories derived from the current implementation.</p>
+
+        <h2>2.1 Account & Authentication (Supabase Auth)</h2>
+        <ul>
+            <li>Email address (provided by you during sign up / sign in)</li>
+            <li>Authentication tokens (managed by Supabase; passwords are hashed and not stored in plain text)</li>
+            <li>Email verification status</li>
+            <li>User ID (UUID assigned by Supabase)</li>
+        </ul>
+
+        <h2>2.2 Email Delivery (Resend)</h2>
+        <ul>
+            <li>Email address (to send verification, password reset, and notification emails)</li>
+            <li>Timestamp of email delivery</li>
+            <li>Email delivery status (sent, delivered, bounced, etc.)</li>
+        </ul>
+        <p>We currently use Resend only for transactional emails (verification, password reset). In the future, we may offer optional marketing emails (app updates, features, tips) through Resend, but only with your explicit consent. You can opt out at any time.</p>
+
+        <h2>2.3 Subscription Sync Data (Supabase PostgreSQL Database)</h2>
+        <p>Per user, we store only what is needed to reproduce your subscriptions and listening progress in the following tables:</p>
+        <ul>
+            <li><strong>podcast_subscriptions</strong>: <code>feed_url</code> (the podcast feed URL), <code>title</code>, <code>author</code>, <code>description</code>, <code>image_url</code>, podcast preferences (download settings, notifications), timestamps</li>
+            <li><strong>episode_progress</strong>: <code>episode_id</code>, <code>current_position</code> (playback position), <code>is_played</code> (boolean), <code>last_modified</code> (timestamp), <code>podcast_feed_url</code>, <code>episode_title</code></li>
+        </ul>
+        <p>We intentionally keep metadata minimal—full podcast and episode details are resolved on-device from the RSS feed when needed.</p>
+
+        <h2>2.4 Playback & Download Data (On Device Only)</h2>
+        <p>Stored locally using Apple frameworks (SwiftData + file system):</p>
+        <ul>
+            <li>Episode metadata (title, description, duration, publish date)</li>
+            <li>Downloaded audio files (saved under an app Documents/Downloads directory)</li>
+            <li>Local file size & path for downloaded episodes</li>
+            <li>Playback state: <code>currentTime</code>, <code>isPlayed</code></li>
+            <li>Automatic download settings (e.g., Wi-Fi only, latest only, max episodes)</li>
+            <li>Per-podcast preferences: notification toggles, download strategy</li>
+        </ul>
+        <p>This information is <strong>not</strong> uploaded unless explicitly mirrored as minimal sync fields (see 2.3).</p>
+
+        <h2>2.5 Minimal Analytics (Firebase Analytics)</h2>
+        <p>We limit analytics to a single custom event once per calendar day per device: <code>active_user</code> with parameters:</p>
+        <ul>
+            <li><code>authenticated</code> (true/false) – whether you are signed in</li>
+            <li><code>device_model</code> (e.g., hardware identifier like <code>iPhone15,2</code>)</li>
+            <li><code>device_class</code> (iPhone / iPad / Mac)</li>
+            <li><code>region</code> (derived from system locale; not GPS)</li>
+            <li><code>os_version</code> (e.g., iOS_18.0.1)</li>
+            <li><code>app_version</code> and <code>app_build</code></li>
+            <li><code>language</code> (primary preferred language code)</li>
+        </ul>
+        <p>No interaction events (taps, searches, screens viewed, etc.) are logged.</p>
+
+        <h2>2.6 Crash Reporting (Firebase Crashlytics)</h2>
+        <p>On crashes or critical non-fatal errors, Crashlytics may collect:</p>
+        <ul>
+            <li>Stack traces & code paths</li>
+            <li>Device model, OS version, app build identifiers</li>
+            <li>(If signed in) A user ID (Supabase UUID) assigned to correlate crashes. We do <strong>not</strong> attach email or personal profile details.</li>
+        </ul>
+
+        <h2>2.7 Premium Subscriptions (RevenueCat)</h2>
+        <p>RevenueCat processes data necessary to verify and manage your premium subscription entitlements. This includes:</p>
+        <ul>
+            <li>An anonymized app user identifier (linked to your Supabase UUID)</li>
+            <li>App Store purchase receipts & transaction identifiers</li>
+            <li>Platform + device metadata used to validate entitlements</li>
+            <li>Subscription status and expiration date (non-personal)</li>
+        </ul>
+        <p>We do <strong>not</strong> have access to your full payment details; all payments are processed securely through Apple.</p>
+
+        <h2>2.8 System & Network Checks</h2>
+        <p>We perform passive network reachability checks (Wi-Fi vs. Cellular) to decide when to sync or auto-download. We do <strong>not</strong> persist IP addresses or network identifiers.</p>
+
+        <h2>2.9 Local Preferences & Caches</h2>
+        <ul>
+            <li>A <code>UserDefaults</code> key (<code>analytics.lastActiveUserLogDate</code>) to prevent duplicate daily analytics events</li>
+            <li>Image caches for artwork (not transmitted externally except when originally fetched from the podcast feed source)</li>
+        </ul>
+
+        <h2>3. What We Do NOT Collect</h2>
+        <p>We do <strong>not</strong> collect:</p>
+        <ul>
+            <li>GPS / precise location</li>
+            <li>Contact lists, calendars, photos, microphone recordings, or motion data</li>
+            <li>Behavioral analytics (screen flows, button taps, retention funnels)</li>
+            <li>Advertising identifiers (IDFA) for tracking</li>
+            <li>Sensitive personal attributes</li>
+        </ul>
+        <p>We also do <strong>not</strong> perform cross-app tracking or third-party ad targeting.</p>
+
+        <h2>4. Legal Bases (EEA / UK / Similar Jurisdictions)</h2>
+        <p>Where applicable under GDPR / UK GDPR:</p>
+        <ul>
+            <li>Account authentication & sync (Supabase): Performance of a contract (Art. 6(1)(b))</li>
+            <li>Transactional email delivery (Resend): Performance of a contract (verification emails) and legitimate interest (notifications)</li>
+            <li>Marketing emails (Resend - future/optional): Consent (Art. 6(1)(a)) - only if you opt in</li>
+            <li>Crash diagnostics & minimal analytics (Firebase): Legitimate interest in app stability & aggregate usage measurement (Art. 6(1)(f))</li>
+            <li>Subscription entitlement validation (RevenueCat): Performance of a contract</li>
+            <li>User communications (support inquiries): Legitimate interest and/or performance of contract</li>
+        </ul>
+        <p>Where consent is required by local law (e.g., for certain analytics jurisdictions), we will implement a consent prompt before activating optional analytics beyond the current minimal event.</p>
+
+        <h2>5. How We Use the Data</h2>
+        <ul>
+            <li>Provide cross-device sync of your podcast subscriptions and playback position</li>
+            <li>Maintain reliable downloads & playback state</li>
+            <li>Count daily active users (high-level only)</li>
+            <li>Diagnose crashes & critical sync errors</li>
+            <li>Verify and maintain premium subscription access</li>
+        </ul>
+        <p>We do <strong>not</strong> profile users or build behavioral segments.</p>
+
+        <h2>6. Data Sharing & Processors</h2>
+        <p>We use the following service providers (data processors):</p>
+        <ul>
+            <li><strong>Supabase</strong> (Authentication & PostgreSQL Database) – User authentication and cloud data storage for subscriptions and progress sync</li>
+            <li><strong>Resend</strong> (Email Delivery) – Transactional email delivery (verification, password reset, notifications)</li>
+            <li><strong>Google Firebase</strong> (Analytics & Crashlytics only) – Minimal usage analytics and crash diagnostics</li>
+            <li><strong>Apple (App Store)</strong> – Facilitates purchases and receipt generation</li>
+            <li><strong>RevenueCat</strong> – Subscription receipt validation & entitlement management</li>
+        </ul>
+        <p>We do not sell or rent your data. We only disclose data if required by law or to defend legal rights.</p>
+
+        <h2>7. Data Retention</h2>
+        <ul>
+            <li><strong>Subscription & progress sync data (Supabase)</strong>: Retained until you delete your account. When you initiate deletion, data is marked for removal and permanently deleted after a 7-day grace period (see Section 9). We do not automatically delete inactive accounts, as this data is necessary to preserve your podcast subscriptions and listening progress if you return later.</li>
+            <li><strong>Pending account deletions</strong>: Records of deletion requests are stored for the grace period duration and purged along with your account data once the grace period expires.</li>
+            <li><strong>Email delivery logs (Resend)</strong>: Retained according to Resend's standard retention policy (typically 30-90 days).</li>
+            <li><strong>Daily active analytics events (Firebase)</strong>: Stored by Firebase according to its standard retention (typically up to 14 months unless configured otherwise).</li>
+            <li><strong>Crash reports (Firebase)</strong>: Retained per Firebase Crashlytics default retention window.</li>
+            <li><strong>Subscription data (RevenueCat)</strong>: Retained as long as your subscription is active and for a reasonable period thereafter for entitlement verification.</li>
+            <li><strong>Local downloads</strong>: Remain on your device until you delete them or uninstall the App.</li>
+        </ul>
+        <p>We may implement optional account cleanup tools in future updates, but we will not delete your data without your explicit request.</p>
+
+        <h2>8. Your Rights</h2>
+        <p>Depending on your jurisdiction (e.g., GDPR, CCPA/CPRA, UK GDPR), you may have rights to:</p>
+        <ul>
+            <li>Access a copy of personal data we store about you</li>
+            <li>Correct inaccurate data (limited—data set is minimal)</li>
+            <li>Delete your account & associated sync data</li>
+            <li>Restrict or object to certain processing (e.g., crash correlation via user ID)</li>
+            <li>Data portability (your subscription feed URLs and progress metadata)</li>
+        </ul>
+        <p>To exercise rights, contact <strong><a href="mailto:support@fluidcastapp.com">support@fluidcastapp.com</a></strong>. We may need to verify account ownership (e.g., by sending a confirmation link to your registered email).</p>
+        <p>CCPA/CPRA: We do not sell or share personal information as defined under California law.</p>
+
+        <h2>9. Account & Data Deletion</h2>
+        <p>You can delete your account and all associated sync data directly within the App using the <strong>Delete Account</strong> option in settings.</p>
+
+        <h2>9.1 Soft Deletion & Grace Period</h2>
+        <p>When you initiate account deletion, we implement a <strong>7-day grace period</strong> by default:</p>
+        <ul>
+            <li>Your account is marked for deletion and scheduled for permanent removal after 7 days.</li>
+            <li>During this grace period, you can cancel the deletion request by signing back in. All your data remains intact and accessible.</li>
+            <li>After the grace period expires, your account and all associated data are <strong>permanently deleted</strong> and cannot be recovered.</li>
+        </ul>
+        <p>This grace period protects against accidental deletions and gives you time to reconsider. If you need immediate deletion without a grace period, contact <strong><a href="mailto:support@fluidcastapp.com">support@fluidcastapp.com</a></strong> with your request.</p>
+
+        <h2>9.2 What Gets Deleted</h2>
+        <p>Account deletion (after grace period) permanently removes:</p>
+        <ul>
+            <li>Your Supabase authentication account and profile</li>
+            <li>All podcast subscriptions and episode progress stored in our database</li>
+            <li>Premium subscription entitlement records (note: active App Store subscriptions must be cancelled separately through Apple)</li>
+            <li>Sync queue records</li>
+            <li>Any crash correlation identifiers tied to your user ID</li>
+        </ul>
+
+        <h2>9.3 What Remains</h2>
+        <ul>
+            <li>Local data on your device (downloaded episodes, preferences) remains until you uninstall the app.</li>
+            <li>Historical analytics events (already anonymized) may persist in Firebase's retention window.</li>
+            <li>Email delivery logs in Resend's system (per their retention policy, typically 30-90 days).</li>
+            <li>RevenueCat transaction history (per their compliance requirements for financial records).</li>
+        </ul>
+        <p>You can also email <strong><a href="mailto:support@fluidcastapp.com">support@fluidcastapp.com</a></strong> with the subject: "FluidCast Data Deletion" and include the email you used to register if you prefer manual processing.</p>
+
+        <h2>10. Security Measures</h2>
+        <ul>
+            <li>Transport security: All network calls use HTTPS/TLS.</li>
+            <li>Cloud storage: Hosted on Supabase infrastructure (built on PostgreSQL with industry-standard physical and logical safeguards).</li>
+            <li>Database security: Row Level Security (RLS) policies ensure users can only access their own data.</li>
+            <li>Principle of data minimization: Only essential fields are synced (feed URLs, titles, and progress metadata).</li>
+            <li>Access control: Authentication required for any user-specific database reads/writes.</li>
+            <li>Password security: Passwords are hashed using industry-standard algorithms and never stored in plain text.</li>
+        </ul>
+        <p>No system is perfectly secure; if we detect a data incident affecting you, we will follow applicable legal notification requirements.</p>
+
+        <h2>11. Children's Privacy</h2>
+        <p>The App is not directed to children under 13 (or the minimum age in your jurisdiction). We do not knowingly collect personal data from children. If you believe a child has provided personal data, contact us to request deletion.</p>
+
+        <h2>12. International Transfers</h2>
+        <p>Data may be processed in the United States or other regions where Supabase, Resend, Firebase, or RevenueCat operate. Appropriate safeguards (such as Standard Contractual Clauses) are relied upon where required.</p>
+
+        <h2>13. Third-Party Podcast Content</h2>
+        <p>When you subscribe to a podcast, the App fetches RSS feed data & artwork directly from the podcast's hosting servers. Those third parties may log standard server access data (e.g., IP address). Their practices are governed by their own policies.</p>
+
+        <h2>14. Changes to This Policy</h2>
+        <p>We will update this policy if we expand analytics beyond the current minimal implementation or make significant changes to data handling. Material changes will be highlighted in-app or via release notes.</p>
+
+        <h2>15. Contact</h2>
+        <p>Data Controller / Privacy Contact:</p>
+        <ul>
+            <li><strong>Name / Entity:</strong> Joseph Bishop (FluidCast)</li>
+            <li><strong>Email:</strong> <a href="mailto:support@fluidcastapp.com">support@fluidcastapp.com</a></li>
+        </ul>
+        <p>For EU/UK users wishing to exercise rights, please include "Privacy Request" in the subject line.</p>
+
+        <h2>16. Summary (Human-Readable)</h2>
+        <p>FluidCast keeps things simple: we use Supabase to store your podcast subscriptions and where you stopped listening so you can pick up on another device. We send verification emails through Resend. We log one anonymous-ish event per day (via Firebase) so we know someone used the app. If it crashes, we get a technical report (via Firebase). Premium subscriptions are handled securely through RevenueCat. You can delete your account at any time from within the app—we'll give you 7 days to change your mind before permanent deletion. That's it.</p>
+    </div>
+</body>
+</html>

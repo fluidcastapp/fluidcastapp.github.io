@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join the FluidCast TestFlight beta to try the app before public release.">
+    <title>Join FluidCast Beta – TestFlight</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgb(44, 56, 80) 0%, rgb(29, 40, 58) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        .logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            background: #fff;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Burger Menu */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgb(29, 40, 58) 0%, rgb(15, 23, 40) 100%);
+            color: white;
+            padding: 140px 2rem 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: rgb(29, 40, 58);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.18);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.12);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            padding: 40px 2rem;
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: left;
+            color: #2d3748;
+        }
+
+        .content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .content p {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .steps {
+            margin-top: 1rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .step {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 1rem; }
+            .logo { font-size: 1.4rem; }
+            .logo img { height: 32px; width: 32px; }
+            .burger-menu { display: flex; }
+            .nav-links { position: fixed; top: 60px; right: -100%; width: 70%; max-width: 300px; height: calc(100vh - 60px); background: linear-gradient(135deg, rgb(44, 56, 80) 0%, rgb(29, 40, 58) 100%); flex-direction: column; gap: 0; padding: 2rem 0; transition: right 0.3s ease; box-shadow: -2px 0 10px rgba(0,0,0,0.2); }
+            .nav-links.active { right: 0; }
+            .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-links a { display: block; padding: 1rem 2rem; font-size: 1.1rem; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/fluidcasticonweb.jpg" alt="FluidCast Logo">
+                FluidCast
+            </div>
+            <div class="burger-menu" id="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Join the FluidCast Beta on TestFlight</h1>
+        <p>Help shape FluidCast by testing early versions. Install TestFlight from the App Store, then tap the join link below to get the beta on your iPhone.</p>
+        <div class="cta-buttons">
+            <!-- Replace the URLs below with your actual TestFlight public link and Google Form link -->
+            <a href="https://testflight.apple.com/join/eQ4zJ7Et" class="btn btn-primary">Join on TestFlight</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsWwTn6bt23l7vuEVkfbspImAzKJor4Gd2QOnjRmaDYwof-w/viewform?usp=dialog" class="btn btn-primary" style="background: linear-gradient(90deg,#ffd700,#ffb700); color:#2d3748;">Test Pro features</a>
+        </div>
+    </section>
+
+    <main class="content">
+        <h2>How to join</h2>
+        <p>We appreciate your help testing FluidCast. Follow these quick steps to join the TestFlight beta:</p>
+
+        <div class="steps">
+            <div class="step">
+                <strong>1. Install TestFlight</strong>
+                <p>If you don't already have TestFlight, install it from the App Store on your iPhone.</p>
+            </div>
+
+            <div class="step">
+                <strong>2. Tap the Join Link</strong>
+                <p>On your iPhone, tap the <em>Join on TestFlight</em> button above (or paste the link into Safari). This will open TestFlight and let you accept the beta invite.</p>
+            </div>
+
+            <div class="step">
+                <strong>3. Install and Test</strong>
+                <p>Install the beta build from TestFlight. Please try core features and report issues to support@fluidcastapp.com with the build number and steps to reproduce.</p>
+            </div>
+        </div>
+
+    <h2 style="margin-top:1.25rem;">Notes</h2>
+    <p>TestFlight builds may expire. If the link stops working or the build is full, contact support and we'll add you to the next batch.</p>
+
+    <h2 style="margin-top:1.25rem;">Request Pro Entitlement</h2>
+    <p>If you’d like to receive Pro access (cloud sync, premium features), tap the <strong>Test Pro Features</strong> button above and fill in the Google Form. Provide the email address asociated with your account, and you will be granted 3 months of Pro once approved, (up to a day).</p>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </div>
+        <p style="opacity:0.8">&copy; 2025 FluidCast. All rights reserved.</p>
+        <p style="opacity:0.8">Contact: support@fluidcastapp.com</p>
+    </footer>
+
+    <script>
+        const burgerMenu = document.getElementById('burger-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        burgerMenu.addEventListener('click', () => {
+            burgerMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        const navItems = navLinks.querySelectorAll('a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!burgerMenu.contains(e.target) && !navLinks.contains(e.target)) {
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
