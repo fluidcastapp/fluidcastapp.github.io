@@ -41,7 +41,11 @@ class CookieConsent {
   }
 
   setConsent(consent) {
-    localStorage.setItem(this.storageKey, JSON.stringify(consent));
+    try {
+      localStorage.setItem(this.storageKey, JSON.stringify(consent));
+    } catch (e) {
+      console.warn('Cookie consent could not be saved (localStorage blocked?):', e);
+    }
     this.applyConsentSettings();
   }
 
@@ -123,7 +127,7 @@ class CookieConsent {
     const content = document.getElementById('cookie-content');
     const preferences = document.getElementById('cookie-preferences');
     
-    if (content) content.display = 'block';
+    if (content) content.style.display = 'block';
     if (preferences) preferences.style.display = 'none';
   }
 
