@@ -58760,7 +58760,7 @@ return A.l($async$yO,r)},
 H4(){var s=0,r=A.m(t.H),q=1,p=[],o,n,m,l,k,j
 var $async$H4=A.i(function(a,b){if(a===1){p.push(b)
 s=q}for(;;)switch(s){case 0:q=3
-o=null
+o="https://fluidcastapp.com/web/"
 A.n(o)
 l=$.dd().b
 l===$&&A.a()
@@ -58792,7 +58792,7 @@ return A.l($async$yP,r)},
 H5(){var s=0,r=A.m(t.H),q=1,p=[],o,n,m,l,k,j
 var $async$H5=A.i(function(a,b){if(a===1){p.push(b)
 s=q}for(;;)switch(s){case 0:q=3
-o=null
+o="https://fluidcastapp.com/web/"
 A.n(o)
 l=$.dd().b
 l===$&&A.a()
@@ -115827,18 +115827,19 @@ return A.l($async$GF,r)},
 FN(a,b,c,d,e){return this.ato(a,b,c,d,e)},
 ato(a,b,c,d,e){var s=0,r=A.m(t.PO),q,p=this,o,n,m,l
 var $async$FN=A.i(function(f,g){if(f===1)return A.j(g,r)
-for(;;)switch(s){case 0:n=t.N
-m=A.a8(["provider",A.beD(a)],n,n)
-l=p.ay
-s=l===B.dK?3:4
+for(;;)switch(s){case 0:m=t.N
+l=A.a8(["provider",A.beD(a)],m,m)
+l.m(0,"redirect_to",c)
+o=p.ay
+s=o===B.dK?3:4
 break
-case 3:o=A.b89()
+case 3:n=A.b89()
 s=5
-return A.c(p.ax.rL("supabase.auth.token-code-verifier",o),$async$FN)
-case 5:m.F(0,A.a8(["flow_type",l.b,"code_challenge",A.b88(o),"code_challenge_method","s256"],n,n))
-case 4:n=A.q7(null,null,null,null,null,m,null).f
-if(n==null)n=""
-q=new A.Yu(e+"?"+n)
+return A.c(p.ax.rL("supabase.auth.token-code-verifier",n),$async$FN)
+case 5:l.F(0,A.a8(["flow_type",o.b,"code_challenge",A.b88(n),"code_challenge_method","s256"],m,m))
+case 4:m=A.q7(null,null,null,null,null,l,null).f
+if(m==null)m=""
+q=new A.Yu(e+"?"+m)
 s=1
 break
 case 1:return A.k(q,r)}})
