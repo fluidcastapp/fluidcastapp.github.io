@@ -238,17 +238,7 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
 
-        .alpha-label {
-            background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-            font-size: 0.85rem;
-            font-weight: 700;
-            border-radius: 6px;
-            padding: 2px 8px;
-            margin-left: 8px;
-            vertical-align: middle;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        }
+
 
         .feature-card p {
             color: #718096;
@@ -619,80 +609,88 @@
             text-align: center;
         }
 
-        .downloads-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .download-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        /* Download Smart Section */
+        .download-smart {
+            margin-top: 2.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .download-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .download-platforms h3 {
-            font-size: 1.3rem;
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-        }
-
-        .platform-list {
-            color: #718096;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .download-button {
-            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1.5rem;
-            background: #f7fafc;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            color: #2d3748;
-            transition: background 0.3s, transform 0.3s;
-            border: 2px solid transparent;
+            gap: 1.5rem;
         }
 
-        .download-button:hover {
-            background: #e2e8f0;
-            transform: scale(1.05);
+        .download-badge-link {
+            display: inline-block;
+            transition: transform 0.2s, opacity 0.2s;
         }
 
-        .download-button img {
+        .download-badge-link:hover {
+            transform: scale(1.04);
+            opacity: 0.9;
+        }
+
+        .download-badge-link img {
             height: 60px;
             width: auto;
         }
 
-        .github-button {
+        .download-direct-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.85rem 2rem;
             background: #2d3748;
             color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s, transform 0.2s;
         }
 
-        .github-button:hover {
+        .download-direct-btn:hover {
             background: #1a202c;
+            transform: scale(1.04);
         }
 
-        .github-icon {
-            font-size: 1.2rem;
+        .download-direct-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+            flex-shrink: 0;
+        }
+
+        .download-picker-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .download-picker-label {
+            font-size: 0.88rem;
+            color: #a0aec0;
+        }
+
+        .download-picker {
+            appearance: none;
+            -webkit-appearance: none;
+            background: #f7fafc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 0.9rem center;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 0.55rem 2.4rem 0.55rem 1rem;
+            font-size: 0.95rem;
+            color: #4a5568;
+            font-family: inherit;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            min-width: 220px;
+            text-align: center;
+        }
+
+        .download-picker:hover,
+        .download-picker:focus {
+            border-color: #a0aec0;
+            outline: none;
         }
 
         /* CTA Section */
@@ -1031,7 +1029,7 @@
                     </div>
                     <div class="feature-item">
                         <span class="check pro-check">✓</span>
-                        <span>Cloud sync across all supported devices**</span>
+                        <span>Cloud sync across all supported devices</span>
                     </div>
                     <div class="feature-item">
                         <span class="check pro-check">✓</span>
@@ -1053,7 +1051,6 @@
         <div class="pricing-note">
             <p><strong>Note:</strong> Pro subscriptions can currently be managed on iOS, MacOS and the <a href="https://fluidcastapp.com/web">Web Player</a></p>
             <p style="margin-top: 0.75rem; font-size: 0.9rem; color: #718096;"><em>*AI Ad Skipping requires iOS 26 and Apple Intelligence enabled. May produce inaccurate results and may use more battery life.</em></p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #718096;"><em>**See roadmap for current device support availability.</em></p>
         </div>
     </section>
 
@@ -1061,17 +1058,17 @@
     <!-- Platforms Section -->
     <section id="platforms" class="platforms">
         <h2 class="section-title">Available on Your Favorite Devices</h2>
-        <p class="section-subtitle">FluidCast works seamlessly across iOS and watchOS</p>
-        
+        <p class="section-subtitle">FluidCast works seamlessly across all your devices</p>
+
         <div class="platform-list-container">
             <div class="platform-list">
                 <span class="platform-item">iPhone</span>
                 <span class="platform-item">iPad</span>
                 <span class="platform-item">Mac</span>
                 <span class="platform-item">Apple Watch <span class="pro-label">Pro</span></span>
-                <span class="platform-item">Windows <span class="alpha-label">Alpha</span></span>
-                <span class="platform-item">Android <span class="alpha-label">Alpha</span></span>
-                <span class="platform-item">Linux <span class="alpha-label">Alpha</span></span>
+                <span class="platform-item">Android</span>
+                <span class="platform-item">Windows</span>
+                <span class="platform-item">Linux</span>
             </div>
         </div>
     </section>
@@ -1106,7 +1103,7 @@
             <div class="roadmap-phase">
                 <div class="roadmap-phase-header">
                     <h3>Phase 2</h3>
-                    <span class="roadmap-status status-launched">Available in Alpha</span>
+                    <span class="roadmap-status status-launched">Available Now</span>
                 </div>
                 <div class="roadmap-platforms">
                     <span class="platform-badge">
@@ -1129,9 +1126,6 @@
                 <div class="roadmap-platforms">
                     <span class="platform-badge">
                         Apple TV
-                    </span>
-                    <span class="platform-badge">
-                        Android Play Store
                     </span>
                 </div>
             </div>
@@ -1156,28 +1150,21 @@
     <!-- Downloads Section -->
     <section id="download" class="downloads">
         <h2 class="section-title">Download FluidCast</h2>
-        <p class="section-subtitle">Get FluidCast on your preferred platform</p>
-        
-        <div class="downloads-container">
-            <div class="download-card">
-                <div class="download-platforms">
-                    <h3>Apple Devices</h3>
-                    <p class="platform-list">iPhone • iPad • Mac • Apple Watch</p>
-                </div>
-                <a href="https://apps.apple.com/us/app/fluidcast/id6754508580" class="download-button">
-                    <img src="images/appstoredownload.svg" alt="Download on App Store">
-                </a>
-            </div>
+        <p class="section-subtitle">Available on all your devices</p>
 
-            <div class="download-card">
-                <div class="download-platforms">
-                    <h3>Other Platforms (Alpha)</h3>
-                    <p class="platform-list">Android • Windows • Linux</p>
-                </div>
-                <a href="https://github.com/fluidcastapp/fluidcastapp.github.io/releases" class="download-button github-button">
-                    <span class="github-icon"></span>
-                    Download
-                </a>
+        <div class="download-smart">
+            <!-- Primary download button, set by JS based on detected platform -->
+            <div id="download-primary"><!-- filled by JS --></div>
+
+            <!-- Platform picker -->
+            <div class="download-picker-wrap">
+                <span class="download-picker-label">Download for a different platform</span>
+                <select class="download-picker" id="download-picker" onchange="handlePlatformPick(this)">
+                    <option value="ios">iOS &amp; Mac — App Store</option>
+                    <option value="android">Android — Google Play</option>
+                    <option value="windows">Windows — Direct download</option>
+                    <option value="linux">Linux — Direct download</option>
+                </select>
             </div>
         </div>
     </section>
@@ -1257,6 +1244,42 @@
                 closeScreenshotModal();
             }
         });
+
+        // Platform-specific download definitions
+        var DOWNLOADS = {
+            ios: '<a href="https://apps.apple.com/us/app/fluidcast/id6754508580" class="download-badge-link" target="_blank" rel="noopener noreferrer"><img src="images/appstoredownload.svg" alt="Download on the App Store"></a>',
+            android: '<a href="https://play.google.com/store/apps/details?id=com.FluidCastApp.FluidCast&hl=en" class="download-badge-link" target="_blank" rel="noopener noreferrer"><img src="images/playstoredownload.svg" alt="Get it on Google Play"></a>',
+            windows: '<a href="https://github.com/fluidcastapp/fluidcastapp.github.io/releases/latest/download/FluidCast_Windows-x64.exe" class="download-direct-btn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Download for Windows</a>',
+            linux: '<a href="https://github.com/fluidcastapp/fluidcastapp.github.io/releases/latest/download/FluidCast_Linux-x64.AppImage" class="download-direct-btn" target="_blank" rel="noopener noreferrer">Download for Linux</a>'
+        };
+
+        function renderPrimaryDownload(platform) {
+            document.getElementById('download-primary').innerHTML = DOWNLOADS[platform];
+        }
+
+        function handlePlatformPick(select) {
+            renderPrimaryDownload(select.value);
+        }
+
+        // Detect platform and set picker + primary download
+        (function() {
+            var ua = navigator.userAgent;
+            var pl = navigator.platform || '';
+            var isIOS     = /iPhone|iPad|iPod/.test(ua);
+            var isMac     = /Macintosh|MacIntel/.test(pl) && !isIOS;
+            var isAndroid = /Android/.test(ua);
+            var isWindows = /Win/.test(pl) || /Windows/.test(ua);
+            var isLinux   = /Linux/.test(pl) && !isAndroid;
+
+            var detected = (isIOS || isMac) ? 'ios'
+                         : isAndroid        ? 'android'
+                         : isWindows        ? 'windows'
+                         : isLinux          ? 'linux'
+                         : 'ios';
+
+            document.getElementById('download-picker').value = detected;
+            renderPrimaryDownload(detected);
+        })();
     </script>
 
     <!-- Cookie Consent Dialog -->
