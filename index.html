@@ -1015,7 +1015,7 @@
     <!-- Easter Sale Popup -->
     <div id="easter-popup">
         <div class="easter-popup-content">
-            <button class="easter-popup-close" onclick="document.getElementById('easter-popup').classList.remove('show')">×</button>
+            <button class="easter-popup-close" onclick="window.closeEasterPopup()">×</button>
             <h2>🐰 Easter Sale!</h2>
             <p id="easter-offer-text"></p>
             <div id="easter-code-section" style="display: none;">
@@ -1023,7 +1023,7 @@
                 <div class="easter-popup-code">LAUNCHHP</div>
             </div>
             <p class="easter-popup-expires">Offer expires: <strong>Wednesday, April 8, 2026</strong></p>
-            <button class="easter-popup-button" onclick="document.getElementById('easter-popup').classList.remove('show')">Get FluidCast</button>
+            <button class="easter-popup-button" onclick="window.closeEasterPopup()">Get FluidCast</button>
         </div>
     </div>
 
@@ -1033,6 +1033,12 @@
             const popup = document.getElementById('easter-popup');
             const offerText = document.getElementById('easter-offer-text');
             const codeSection = document.getElementById('easter-code-section');
+
+            // Close popup function
+            window.closeEasterPopup = function() {
+                popup.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            };
 
             // Check if the sale has expired
             const today = new Date();
@@ -1066,10 +1072,10 @@
             // Prevent body scroll when popup is shown
             document.body.style.overflow = 'hidden';
 
-            // Allow scrolling again when popup is closed
+            // Allow scrolling again when clicking outside the popup content
             popup.addEventListener('click', function(e) {
                 if (e.target === popup) {
-                    document.body.style.overflow = 'auto';
+                    window.closeEasterPopup();
                 }
             });
         })();
