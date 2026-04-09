@@ -205,6 +205,10 @@
             gap: 1.5rem;
         }
 
+        .features-grid .feature-card:last-child:nth-child(3n - 2) {
+            grid-column: 2;
+        }
+
         .feature-card {
             text-align: center;
             padding: 1.25rem;
@@ -514,94 +518,6 @@
             color: #2d3748;
         }
 
-        /* Roadmap Section */
-        .roadmap {
-            padding: 40px 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .roadmap-timeline {
-            margin-top: 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .roadmap-phase {
-            background: white;
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            text-align: left;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .roadmap-phase:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
-
-        .roadmap-phase-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.75rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .roadmap-phase h3 {
-            font-size: 1.1rem;
-            color: #2d3748;
-            margin: 0;
-        }
-
-        .roadmap-status {
-            font-size: 0.85rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-        }
-
-        .status-launched {
-            background: #c6f6d5;
-            color: #22543d;
-        }
-
-        .status-coming-soon {
-            background: #bee3f8;
-            color: #2c5282;
-        }
-
-        .status-planned {
-            background: #e2e8f0;
-            color: #4a5568;
-        }
-
-        .roadmap-platforms {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .platform-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #f7fafc;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            color: #2d3748;
-            font-weight: 500;
-        }
-
-        .platform-icon-small {
-            font-size: 1.2rem;
-        }
-
         /* Downloads Section */
         .downloads {
             padding: 40px 2rem;
@@ -827,11 +743,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .roadmap-timeline {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-container {
+.pricing-container {
                 flex-direction: column;
                 align-items: center;
             }
@@ -1097,7 +1009,6 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pro</a></li>
                 <li><a href="#platforms">Platforms</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="https://medium.com/@fluidcastapp" target="_blank" rel="noopener noreferrer">News</a></li>
                 <li><a href="/web">Web Player</a></li>
                 <li><a href="#download">Download</a></li>
@@ -1177,9 +1088,15 @@
             </div>
             
             <div class="feature-card">
-                <div class="feature-icon">🕘</div>
-                <h3>Playback History</h3>
-                <p>View your listening history and jump back to previously played episodes</p>
+                <div class="feature-icon">🎚️</div>
+                <h3>Advanced Audio Controls</h3>
+                <p>Control playback speed and automatically skip silences for a faster, more efficient listening experience</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🚗</div>
+                <h3>CarPlay</h3>
+                <p>Listen to your favourite podcasts hands-free with full CarPlay support while on the road</p>
             </div>
         </div>
     </section>
@@ -1217,6 +1134,10 @@
                         <span class="check">✓</span>
                         <span>Episode transcripts</span>
                     </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>CarPlay</span>
+                    </div>
                 </div>
             </div>
 
@@ -1239,7 +1160,7 @@
                     </div>
                     <div class="feature-item">
                         <span class="check pro-check">✓</span>
-                        <span>Cloud sync across all supported devices</span>
+                        <span>Cloud sync across all your devices</span>
                     </div>
                     <div class="feature-item">
                         <span class="check pro-check">✓</span>
@@ -1283,79 +1204,6 @@
         </div>
     </section>
 
-    <!-- Roadmap Section -->
-    <section id="roadmap" class="roadmap">
-        <h2 class="section-title">Roadmap</h2>
-        <p class="section-subtitle">Our journey to bring FluidCast to every platform</p>
-        
-        <div class="roadmap-timeline">
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <h3>Launch</h3>
-                    <span class="roadmap-status status-launched">Available Now</span>
-                </div>
-                <div class="roadmap-platforms">
-                    <span class="platform-badge">
-                        iPhone
-                    </span>
-                    <span class="platform-badge">
-                        iPad
-                    </span>
-                    <span class="platform-badge">
-                        Mac
-                    </span>
-                    <span class="platform-badge">
-                        Apple Watch
-                    </span>
-                </div>
-            </div>
-
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <h3>Phase 2</h3>
-                    <span class="roadmap-status status-launched">Available Now</span>
-                </div>
-                <div class="roadmap-platforms">
-                    <span class="platform-badge">
-                        Android
-                    </span>
-                    <span class="platform-badge">
-                        Windows
-                    </span>
-                    <span class="platform-badge">
-                        Linux
-                    </span>
-                </div>
-            </div>
-
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <h3>Phase 3</h3>
-                    <span class="roadmap-status status-planned">Planned</span>
-                </div>
-                <div class="roadmap-platforms">
-                    <span class="platform-badge">
-                        Apple TV
-                    </span>
-                </div>
-            </div>
-
-            <div class="roadmap-phase">
-                <div class="roadmap-phase-header">
-                    <h3>Phase 4</h3>
-                    <span class="roadmap-status status-planned">Planned</span>
-                </div>
-                <div class="roadmap-platforms">
-                    <span class="platform-badge">
-                        Web App
-                    </span>
-                    <span class="platform-badge">
-                        CarPlay
-                    </span>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Downloads Section -->
     <section id="download" class="downloads">
