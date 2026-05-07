@@ -576,6 +576,19 @@
             flex-shrink: 0;
         }
 
+        .windows-download-options {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .windows-download-options ms-store-badge {
+            transform: scale(1.18);
+            transform-origin: left center;
+        }
+
         .download-picker-wrap {
             display: flex;
             flex-direction: column;
@@ -922,6 +935,7 @@
             }
         }
     </style>
+    <script type="module" src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"></script>
 </head>
 <body>
     <!-- Easter Sale Popup -->
@@ -1237,7 +1251,7 @@
                 <select class="download-picker" id="download-picker" onchange="handlePlatformPick(this)">
                     <option value="ios">iOS &amp; Mac — App Store</option>
                     <option value="android">Android — Google Play</option>
-                    <option value="windows">Windows — Direct download</option>
+                    <option value="windows">Windows</option>
                     <option value="linux">Linux — Direct download</option>
                 </select>
             </div>
@@ -1324,7 +1338,7 @@
         var DOWNLOADS = {
             ios: '<a href="https://apps.apple.com/us/app/fluidcast/id6754508580" class="download-badge-link" target="_blank" rel="noopener noreferrer"><img src="images/appstoredownload.svg" alt="Download on the App Store"></a>',
             android: '<a href="https://play.google.com/store/apps/details?id=com.FluidCastApp.FluidCast&hl=en" class="download-badge-link" target="_blank" rel="noopener noreferrer"><img src="images/playstoredownload.svg" alt="Get it on Google Play"></a>',
-            windows: '<a href="https://github.com/fluidcastapp/fluidcastapp.github.io/releases/latest/download/FluidCast-x86_64-windows.exe" class="download-direct-btn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Download for Windows</a>',
+            windows: '<div class="windows-download-options"><a href="https://github.com/fluidcastapp/fluidcastapp.github.io/releases/latest/download/FluidCast-x86_64-windows.exe" class="download-direct-btn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Download Installer</a><ms-store-badge productid="9njb92lmw1px" cid="website" productname="FluidCast" window-mode="direct" theme="auto" size="small" language="en-gb" animation="on"></ms-store-badge></div>',
             linux: '<a href="https://github.com/fluidcastapp/fluidcastapp.github.io/releases/latest/download/FluidCast-x86_64-linux.AppImage" class="download-direct-btn" target="_blank" rel="noopener noreferrer">Download for Linux</a>'
         };
 
