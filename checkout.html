@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FluidCast Pro — Checkout</title>
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+    .card {
+      background: #1e293b;
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    }
+    .icon { font-size: 48px; margin-bottom: 16px; }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    p { color: #94a3b8; font-size: 15px; line-height: 1.6; }
+    p strong { color: #e2e8f0; }
+    .btn {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 32px;
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn:hover { background: #4f46e5; }
+    .success-icon { color: #4ade80; }
+    #success-state, #retry-state, #error-state { display: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div id="loading-state">
+      <div class="icon">🎙️</div>
+      <h1>Opening checkout…</h1>
+      <p>Your secure checkout is loading.<br>This should only take a moment.</p>
+    </div>
+
+    <div id="success-state">
+      <div class="icon success-icon">✅</div>
+      <h1>Purchase complete!</h1>
+      <p>Return to the <strong>FluidCast</strong> desktop app and tap <strong>"I've completed my purchase"</strong> to activate your Pro access.</p>
+    </div>
+
+    <div id="retry-state">
+      <div class="icon">🎙️</div>
+      <h1>Ready when you are</h1>
+      <p>Your checkout was closed. Click below whenever you'd like to continue.</p>
+      <button class="btn" onclick="openCheckout()">Continue to checkout</button>
+    </div>
+
+    <div id="error-state">
+      <div class="icon">⚠️</div>
+      <h1>Something went wrong</h1>
+      <p id="error-msg">An unknown error occurred.</p>
+      <a class="btn" href="https://fluidcastapp.com">Return to FluidCast</a>
+    </div>
+
+  </div>
+
+  <script>
+    var PRICE_IDS = {
+      monthly:  'pri_01kta68h4pscgyp0qs93rs3msc',
+      annual:   'pri_01kta68h8b6aacx4pgtb07myjc',
+      lifetime: 'pri_01kta68hc67xdfznz3hw4wq91t'
+    };
+
+    var params  = new URLSearchParams(window.location.search);
+    var plan    = params.get('plan') || 'annual';
+    var uid     = params.get('uid');
+    var priceId = PRICE_IDS[plan] || PRICE_IDS['annual'];
+
+    function show(id) {
+      ['loading-state','success-state','retry-state','error-state'].forEach(function(s) {
+        document.getElementById(s).style.display = s === id ? 'block' : 'none';
+      });
+    }
+
+    if (!uid) {
+      show('error-state');
+      document.getElementById('error-msg').textContent =
+        'No user ID found. Please open this link from the FluidCast app.';
+    } else {
+      Paddle.Initialize({
+        token: 'live_796e0c70a1002b4610b8cd17837',
+        eventCallback: function(event) {
+          if (event.name === 'checkout.completed') {
+            show('success-state');
+          } else if (event.name === 'checkout.closed') {
+            show('retry-state');
+          }
+        }
+      });
+      openCheckout();
+    }
+
+    function openCheckout() {
+      show('loading-state');
+      Paddle.Checkout.open({
+        items: [{ priceId: priceId, quantity: 1 }],
+        customData: { app_user_id: uid },
+        settings: { displayMode: 'overlay' }
+      });
+    }
+  </script>
+</body>
+</html>
