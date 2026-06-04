@@ -14,7 +14,7 @@
     This is a placeholder for base href that will be replaced by the value of
     the `--base-href` argument provided to `flutter build`.
   -->
-  <base href="/web/">
+  <base href="/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -37,6 +37,52 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <!-- Paddle Billing v2 — used for web subscription checkout -->
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script>
+    window.FluidCastPaddle = {
+      _onComplete: null,
+      _onClose: null,
+
+      init: function(token, isSandbox) {
+        if (isSandbox) Paddle.Environment.set('sandbox');
+        Paddle.Initialize({
+          token: token,
+          eventCallback: function(event) {
+            console.log('[Paddle event]', event.name, event.data || '');
+            if (event.name === 'checkout.completed') {
+              var txnId = event.data && event.data.transaction_id;
+              if (window.FluidCastPaddle._onComplete) {
+                window.FluidCastPaddle._onComplete(txnId || null);
+                window.FluidCastPaddle._onComplete = null;
+                window.FluidCastPaddle._onClose = null;
+              }
+            } else if (event.name === 'checkout.closed') {
+              if (window.FluidCastPaddle._onClose) {
+                window.FluidCastPaddle._onClose();
+                window.FluidCastPaddle._onComplete = null;
+                window.FluidCastPaddle._onClose = null;
+              }
+            }
+          }
+        });
+      },
+
+      openCheckout: function(priceId, customerEmail, userId, onComplete, onClose) {
+        window.FluidCastPaddle._onComplete = onComplete;
+        window.FluidCastPaddle._onClose = onClose;
+        var opts = {
+          items: [{ priceId: priceId, quantity: 1 }],
+          settings: { displayMode: 'overlay' }
+        };
+        if (customerEmail) opts.customer = { email: customerEmail };
+        if (userId) opts.customData = { app_user_id: userId };
+        console.log('[Paddle] openCheckout priceId=' + priceId + ' email=' + (customerEmail || 'none') + ' userId=' + (userId || 'none'));
+        Paddle.Checkout.open(opts);
+      }
+    };
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
