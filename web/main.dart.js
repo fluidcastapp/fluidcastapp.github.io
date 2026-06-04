@@ -37761,8 +37761,8 @@ case 1:return A.k(q,r)}})
 return A.l($async$bdD,r)},
 bBt(){var s=$.bm7
 if(s)return
-s=B.c.b8("live_796e0c70a1002b4610b8cd17837","pdl_live_")
-v.G.FluidCastPaddle.init("live_796e0c70a1002b4610b8cd17837",!s)
+s=B.c.b8("live_796e0c70a1002b4610b8cd17837","test_")
+v.G.FluidCastPaddle.init("live_796e0c70a1002b4610b8cd17837",s)
 $.bm7=!0},
 beZ(a,b,c){var s=0,r=A.m(t.T),q
 var $async$beZ=A.i(function(d,e){if(d===1)return A.j(e,r)
