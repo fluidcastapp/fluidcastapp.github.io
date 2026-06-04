@@ -16,6 +16,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://fluidcastapp.com/refund.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://fluidcastapp.com/join-testflight.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
