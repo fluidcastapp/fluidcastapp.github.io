@@ -78,7 +78,7 @@
     <div class="container">
         <a href="index.html" class="back-link">&larr; Back to Home</a>
         <h1>FluidCast Privacy Policy</h1>
-        <p><em>Last Updated: 11 November 2025</em></p>
+        <p><em>Last Updated: 4 June 2026</em></p>
 
         <h2>1. Overview</h2>
         <p>FluidCast ("the App") is a privacy-respecting podcast application that focuses on minimal data collection. We only collect what is necessary to:</p>
@@ -89,6 +89,8 @@
             <li>Measure high-level daily active usage (a single analytics event per day per device - Firebase Analytics)</li>
             <li>Maintain app reliability and diagnose critical crashes (Firebase Crashlytics)</li>
             <li>Manage premium subscription entitlements (RevenueCat)</li>
+            <li>Process payments for web purchases (Paddle)</li>
+            <li>Distribute the app and process purchases on Android (Google Play)</li>
         </ul>
         <p>We do <strong>not</strong> use third-party advertising SDKs, behavioral tracking, or broad engagement analytics. We do <strong>not</strong> sell your personal data.</p>
 
@@ -153,19 +155,34 @@
         </ul>
 
         <h2>2.7 Premium Subscriptions (RevenueCat)</h2>
-        <p>RevenueCat processes data necessary to verify and manage your premium subscription entitlements. This includes:</p>
+        <p>RevenueCat processes data necessary to verify and manage your premium subscription entitlements across all platforms. This includes:</p>
         <ul>
             <li>An anonymized app user identifier (linked to your Supabase UUID)</li>
-            <li>App Store purchase receipts & transaction identifiers</li>
-            <li>Platform + device metadata used to validate entitlements</li>
+            <li>Purchase receipts and transaction identifiers (from Apple App Store, Google Play, or Paddle depending on platform)</li>
+            <li>Platform and device metadata used to validate entitlements</li>
             <li>Subscription status and expiration date (non-personal)</li>
         </ul>
-        <p>We do <strong>not</strong> have access to your full payment details; all payments are processed securely through Apple.</p>
+        <p>We do <strong>not</strong> have access to your full payment card details; those are handled directly by the relevant payment platform (Apple, Google, or Paddle).</p>
 
-        <h2>2.8 System & Network Checks</h2>
+        <h2>2.8 Web Payment Processing (Paddle)</h2>
+        <p>If you purchase a subscription or Lifetime licence through our website, payment is processed by <strong>Paddle.com Market Limited</strong>, who acts as the Merchant of Record. Paddle collects and processes the following data on our behalf:</p>
+        <ul>
+            <li>Name and email address (for receipt and invoice delivery)</li>
+            <li>Billing address (for tax calculation and fraud prevention)</li>
+            <li>Payment card or other payment method details (handled directly by Paddle; we do not receive raw card data)</li>
+            <li>IP address (used by Paddle to determine tax jurisdiction and for fraud detection)</li>
+            <li>Transaction identifiers and purchase amounts</li>
+            <li>Browser and device metadata (for fraud prevention)</li>
+        </ul>
+        <p>Paddle processes this data under their own privacy policy. We receive only the information required to fulfil your order and verify your entitlement (transaction ID, email, and subscription type). For questions about data Paddle holds about you, refer to <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener noreferrer">Paddle's Privacy Policy</a>.</p>
+
+        <h2>2.9 Google Play (Android)</h2>
+        <p>If you use FluidCast on Android, the app is distributed through the Google Play Store. Google Play processes payments for in-app purchases and subscriptions on Android and provides us with purchase tokens and transaction identifiers to verify your entitlement. Google collects and processes payment and device data under their own privacy policy. We do not receive your payment card details from Google Play.</p>
+
+        <h2>2.10 System & Network Checks</h2>
         <p>We perform passive network reachability checks (Wi-Fi vs. Cellular) to decide when to sync or auto-download. We do <strong>not</strong> persist IP addresses or network identifiers.</p>
 
-        <h2>2.9 Local Preferences & Caches</h2>
+        <h2>2.11 Local Preferences & Caches</h2>
         <ul>
             <li>A <code>UserDefaults</code> key (<code>analytics.lastActiveUserLogDate</code>) to prevent duplicate daily analytics events</li>
             <li>Image caches for artwork (not transmitted externally except when originally fetched from the podcast feed source)</li>
@@ -190,6 +207,8 @@
             <li>Marketing emails (Resend - future/optional): Consent (Art. 6(1)(a)) - only if you opt in</li>
             <li>Crash diagnostics & minimal analytics (Firebase): Legitimate interest in app stability & aggregate usage measurement (Art. 6(1)(f))</li>
             <li>Subscription entitlement validation (RevenueCat): Performance of a contract</li>
+            <li>Payment processing for web purchases (Paddle): Performance of a contract (Art. 6(1)(b)); Paddle processes payment data as an independent controller under their own legal bases</li>
+            <li>App distribution and in-app purchases on Android (Google Play): Performance of a contract; Google processes purchase data as an independent controller</li>
             <li>User communications (support inquiries): Legitimate interest and/or performance of contract</li>
         </ul>
         <p>Where consent is required by local law (e.g., for certain analytics jurisdictions), we will implement a consent prompt before activating optional analytics beyond the current minimal event.</p>
@@ -210,8 +229,10 @@
             <li><strong>Supabase</strong> (Authentication & PostgreSQL Database) – User authentication and cloud data storage for subscriptions and progress sync</li>
             <li><strong>Resend</strong> (Email Delivery) – Transactional email delivery (verification, password reset, notifications)</li>
             <li><strong>Google Firebase</strong> (Analytics & Crashlytics only) – Minimal usage analytics and crash diagnostics</li>
-            <li><strong>Apple (App Store)</strong> – Facilitates purchases and receipt generation</li>
-            <li><strong>RevenueCat</strong> – Subscription receipt validation & entitlement management</li>
+            <li><strong>Apple (App Store)</strong> – App distribution and purchase processing for iOS/macOS</li>
+            <li><strong>Google (Google Play)</strong> – App distribution and purchase processing for Android</li>
+            <li><strong>Paddle.com Market Limited</strong> – Payment processing and Merchant of Record for web purchases (subscriptions and Lifetime licence)</li>
+            <li><strong>RevenueCat</strong> – Subscription receipt validation & entitlement management across all platforms</li>
         </ul>
         <p>We do not sell or rent your data. We only disclose data if required by law or to defend legal rights.</p>
 
@@ -256,7 +277,7 @@
         <ul>
             <li>Your Supabase authentication account and profile</li>
             <li>All podcast subscriptions and episode progress stored in our database</li>
-            <li>Premium subscription entitlement records (note: active App Store subscriptions must be cancelled separately through Apple)</li>
+            <li>Premium subscription entitlement records (note: active subscriptions must be cancelled separately through the platform you purchased on — Apple App Store, Google Play, or Paddle)</li>
             <li>Sync queue records</li>
             <li>Any crash correlation identifiers tied to your user ID</li>
         </ul>
@@ -285,7 +306,7 @@
         <p>The App is not directed to children under 13 (or the minimum age in your jurisdiction). We do not knowingly collect personal data from children. If you believe a child has provided personal data, contact us to request deletion.</p>
 
         <h2>12. International Transfers</h2>
-        <p>Data may be processed in the United States or other regions where Supabase, Resend, Firebase, or RevenueCat operate. Appropriate safeguards (such as Standard Contractual Clauses) are relied upon where required.</p>
+        <p>Data may be processed in the United States or other regions where Supabase, Resend, Firebase, RevenueCat, Paddle, or Google operate. Appropriate safeguards (such as Standard Contractual Clauses) are relied upon where required. Paddle is incorporated in the United Kingdom and processes data in accordance with UK GDPR and applicable EU data transfer mechanisms.</p>
 
         <h2>13. Third-Party Podcast Content</h2>
         <p>When you subscribe to a podcast, the App fetches RSS feed data & artwork directly from the podcast's hosting servers. Those third parties may log standard server access data (e.g., IP address). Their practices are governed by their own policies.</p>
@@ -302,7 +323,7 @@
         <p>For EU/UK users wishing to exercise rights, please include "Privacy Request" in the subject line.</p>
 
         <h2>16. Summary (Human-Readable)</h2>
-        <p>FluidCast keeps things simple: we use Supabase to store your podcast subscriptions and where you stopped listening so you can pick up on another device. We send verification emails through Resend. We log one anonymous-ish event per day (via Firebase) so we know someone used the app. If it crashes, we get a technical report (via Firebase). Premium subscriptions are handled securely through RevenueCat. You can delete your account at any time from within the app—we'll give you 7 days to change your mind before permanent deletion. That's it.</p>
+        <p>FluidCast keeps things simple: we use Supabase to store your podcast subscriptions and where you stopped listening so you can pick up on another device. We send verification emails through Resend. We log one anonymous-ish event per day (via Firebase) so we know someone used the app. If it crashes, we get a technical report (via Firebase). Premium subscription entitlements are managed through RevenueCat. If you buy through our website, payments are handled by Paddle (they are the Merchant of Record and issue your receipt). If you buy on Android, Google Play handles the payment. If you buy on iPhone/Mac, Apple handles it. In all cases, we never see your card details. You can delete your account at any time from within the app — we'll give you 7 days to change your mind before permanent deletion. That's it.</p>
     </div>
 
     <!-- Cookie Consent Dialog -->

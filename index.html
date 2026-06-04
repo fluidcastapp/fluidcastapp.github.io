@@ -262,7 +262,7 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             flex-wrap: wrap;
         }
@@ -302,6 +302,30 @@
             padding: 6px 20px;
             border-radius: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .lifetime-card {
+            border: 2px solid #667eea;
+            position: relative;
+        }
+
+        .lifetime-card::before {
+            content: "Pay Once";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .lifetime-check {
+            color: #667eea;
         }
 
         .pricing-header {
@@ -1074,8 +1098,9 @@
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">🤖</div>
-                <h3>AI Ad Skipping* <span class="pro-label">Pro</span></h3>
+                <h3>AI Ad Skipping <span class="pro-label">Pro</span></h3>
                 <p>Automatically skip advertisements using AI-powered detection for uninterrupted listening</p>
+                <p style="font-size: 0.85rem; color: #718096; margin-top: 0.5rem; margin-bottom: 0;">Requires Apple Intelligence (iOS 26+)</p>
             </div>
             
             <div class="feature-card">
@@ -1207,12 +1232,53 @@
                     </div>
                     </div>
                 </div>
+
+            <div class="pricing-card lifetime-card">
+                <div class="pricing-header">
+                    <h3>FluidCast Lifetime</h3>
+                    <div class="price">£89.99</div>
+                    <div class="price-period">one-time purchase</div>
+                </div>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <span class="check lifetime-check">✓</span>
+                        <span>Everything in Pro, forever</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check lifetime-check">✓</span>
+                        <span>AI-powered ad skipping*</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check lifetime-check">✓</span>
+                        <span>Cloud sync across all your devices</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check lifetime-check">✓</span>
+                        <span>Advanced playback queue editing</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check lifetime-check">✓</span>
+                        <span>Bookmarks</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check lifetime-check">✓</span>
+                        <span>Podcast folders</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check lifetime-check">✓</span>
+                        <span>Apple Watch support</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check lifetime-check">✓</span>
+                        <span>No subscription, ever</span>
+                    </div>
+                </div>
             </div>
         </div>
-        
+
         <div class="pricing-note">
-            <p><strong>Note:</strong> Pro subscriptions can currently be managed on the platform you purchased from.</a></p>
-            <p style="margin-top: 0.75rem; font-size: 0.9rem; color: #718096;"><em>*AI Ad Skipping requires iOS 26 and Apple Intelligence enabled. May produce inaccurate results and may use more battery life.</em></p>
+            <p><strong>Note:</strong> Subscriptions can be managed on the platform you purchased from. The Lifetime purchase is available on our website. See our <a href="refund.html">Refund Policy</a> for details.</p>
+            <p style="margin-top: 0.75rem; font-size: 0.9rem; color: #718096;"><em>*AI Ad Skipping requires Apple Intelligence (iOS 26+). May produce inaccurate results and may use more battery life.</em></p>
         </div>
     </section>
 
