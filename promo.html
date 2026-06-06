@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="cookies.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-80XZVYXSQX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-80XZVYXSQX', { 'anonymize_ip': true, 'allow_google_signals': false });
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FluidCast special offers — 90-day free trial on Pro Annual, 60% off Lifetime with code LTLAUNCHPROMO, and a free Lifetime plan raffle.">
+    <title>FluidCast – Special Offers</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <style>
+        html { scroll-behavior: smooth; }
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgb(44, 56, 80) 0%, rgb(29, 40, 58) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: white;
+        }
+        .logo img {
+            height: 40px;
+            width: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            background: #fff;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover { opacity: 0.8; }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .burger-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .burger-menu.active span:nth-child(2) { opacity: 0; }
+        .burger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgb(29, 40, 58) 0%, rgb(15, 23, 40) 100%);
+            color: white;
+            padding: 100px 2rem 60px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #ffd700 0%, #ffb700 100%);
+            color: #1d2a3a;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 4px 16px;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* Deals Section */
+        .deals {
+            background: #f7fafc;
+            padding: 56px 2rem 72px;
+        }
+
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .deal-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.13);
+        }
+
+        .deal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .deal-trial::before  { background: linear-gradient(90deg, #6366f1, #818cf8); }
+        .deal-lifetime::before { background: linear-gradient(90deg, #ffd700, #ffb700); }
+        .deal-raffle::before  { background: linear-gradient(90deg, #22c55e, #16a34a); }
+
+        .deal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .deal-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+        }
+
+        .deal-trial .deal-label  { background: #ede9fe; color: #4f46e5; }
+        .deal-lifetime .deal-label { background: #fef9c3; color: #92400e; }
+        .deal-raffle .deal-label  { background: #dcfce7; color: #15803d; }
+
+        .deal-card h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .deal-card .deal-value {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+            line-height: 1.1;
+        }
+
+        .deal-trial .deal-value  { color: #6366f1; }
+        .deal-lifetime .deal-value { color: #d97706; }
+        .deal-raffle .deal-value  { color: #16a34a; }
+
+        .deal-card .deal-sub {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1.25rem;
+        }
+
+        .deal-card .deal-desc {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.65;
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Promo code block */
+        .promo-code-block {
+            background: #f8fafc;
+            border: 2px dashed #fbbf24;
+            border-radius: 12px;
+            padding: 0.9rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .promo-code-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #92400e;
+        }
+
+        .copy-btn {
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+            color: #92400e;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover { background: #fde68a; }
+        .copy-btn.copied { background: #dcfce7; color: #15803d; border-color: #86efac; }
+
+        /* Steps list */
+        .steps-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.85rem;
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #dcfce7;
+            color: #15803d;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        /* CTA Buttons */
+        .btn-deal {
+            display: block;
+            width: 100%;
+            padding: 0.9rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-deal:hover { opacity: 0.88; transform: translateY(-1px); }
+
+        .btn-trial   { background: linear-gradient(135deg, #6366f1, #818cf8); color: white; }
+        .btn-lifetime { background: linear-gradient(135deg, #ffd700, #ffb700); color: #1d2a3a; }
+        .btn-raffle  { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; }
+
+        /* Notice box */
+        .notice {
+            max-width: 700px;
+            margin: 2.5rem auto 0;
+            background: white;
+            border-left: 4px solid #6366f1;
+            border-radius: 0 12px 12px 0;
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            color: #475569;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .notice strong { color: #1e293b; }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgb(29, 40, 58) 0%, rgb(15, 23, 40) 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        .contact-email {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .deals-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 1rem; }
+
+            .logo { font-size: 1.4rem; }
+            .logo img { height: 32px; width: 32px; }
+
+            .burger-menu { display: flex; }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: calc(100vh - 60px);
+                background: linear-gradient(135deg, rgb(44, 56, 80) 0%, rgb(29, 40, 58) 100%);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+            }
+
+            .nav-links.active { right: 0; }
+            .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .nav-links a { display: block; padding: 1rem 2rem; font-size: 1.1rem; }
+
+            .hero h1 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            nav { padding: 0 0.5rem; }
+            .logo { font-size: 1.2rem; gap: 0.5rem; }
+            .logo img { height: 28px; width: 28px; }
+            .nav-links { width: 80%; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="favicon/apple-touch-icon.png" alt="FluidCast logo">
+            FluidCast
+        </a>
+        <div class="burger-menu" id="burger-menu" aria-label="Toggle menu" role="button" tabindex="0">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#pricing">Pro</a></li>
+            <li><a href="index.html#platforms">Platforms</a></li>
+            <li><a href="https://medium.com/@fluidcastapp" target="_blank" rel="noopener noreferrer">News</a></li>
+            <li><a href="https://www.reddit.com/r/fluidcast" target="_blank" rel="noopener noreferrer">Reddit</a></li>
+            <li><a href="/web">Web Player</a></li>
+            <li><a href="index.html#download">Download</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-badge">Limited Time Offers</div>
+    <h1>Special Promotions</h1>
+    <p>Three ways to get FluidCast Pro — cheaper, or free.</p>
+</section>
+
+<section class="deals">
+    <div class="deals-grid">
+
+        <!-- Deal 1: 90-Day Free Trial -->
+        <div class="deal-card deal-trial">
+            <div class="deal-icon">🎙️</div>
+            <span class="deal-label">Pro Annual</span>
+            <h2>90-Day Free Trial</h2>
+            <div class="deal-value">3 Months Free</div>
+            <p class="deal-sub">Pro Annual — no charge for 90 days</p>
+            <p class="deal-desc">
+                No code needed — trial is applied automatically at checkout.
+                Cancel before 90 days and pay nothing.
+            </p>
+            <a href="index.html#download" class="btn-deal btn-trial">Get FluidCast Free</a>
+        </div>
+
+        <!-- Deal 2: 60% Off Lifetime -->
+        <div class="deal-card deal-lifetime">
+            <div class="deal-icon">⭐</div>
+            <span class="deal-label">Lifetime Deal</span>
+            <h2>60% Off Lifetime</h2>
+            <div class="deal-value">~£36</div>
+            <p class="deal-sub">was £89.99 — save £54 with code below</p>
+            <p class="deal-desc">
+                One-time payment. Pro forever. Enter the code at checkout in the app under <strong>Upgrade → Lifetime</strong>.
+            </p>
+            <div class="promo-code-block">
+                <span class="promo-code-text" id="promo-code">LTLAUNCHPROMO</span>
+                <button class="copy-btn" id="copy-btn" onclick="copyCode()">Copy</button>
+            </div>
+            <p style="font-size:0.8rem; color:#92400e; margin-bottom:1.25rem;">Expires 14 Sep 2026</p>
+            <a href="index.html#download" class="btn-deal btn-lifetime">Get FluidCast</a>
+        </div>
+
+        <!-- Deal 3: Free Lifetime Raffle -->
+        <div class="deal-card deal-raffle">
+            <div class="deal-icon">🎁</div>
+            <span class="deal-label">Raffle</span>
+            <h2>Win a Free Lifetime Plan</h2>
+            <div class="deal-value">Free Lifetime</div>
+            <p class="deal-sub">winners announced in 3 days</p>
+            <ol class="steps-list">
+                <li>
+                    <span class="step-num">1</span>
+                    <span>Start the <strong>90-day free trial</strong></span>
+                </li>
+                <li>
+                    <span class="step-num">2</span>
+                    <span>DM <a href="https://www.reddit.com/r/fluidcast" target="_blank" rel="noopener noreferrer" style="color:#15803d;">u/FluidCastApp</a> on Reddit with your account email</span>
+                </li>
+                <li>
+                    <span class="step-num">3</span>
+                    <span>Winners announced on <strong>r/fluidcast</strong> in 3 days</span>
+                </li>
+            </ol>
+            <a href="https://www.reddit.com/r/fluidcast" target="_blank" rel="noopener noreferrer" class="btn-deal btn-raffle">Go to r/fluidcast</a>
+        </div>
+
+    </div>
+
+</section>
+
+<footer id="contact">
+    <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="refund.html">Refund Policy</a>
+        <a href="index.html">Home</a>
+    </div>
+    <p class="contact-email">Contact: <a href="mailto:support@fluidcastapp.com" style="color:inherit; text-decoration:underline;">support@fluidcastapp.com</a></p>
+</footer>
+
+<script>
+    // Burger menu
+    var burger = document.getElementById('burger-menu');
+    var navLinks = document.getElementById('nav-links');
+    burger.addEventListener('click', function() {
+        burger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+    burger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            burger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        }
+    });
+
+    // Copy promo code
+    function copyCode() {
+        var code = document.getElementById('promo-code').textContent;
+        var btn = document.getElementById('copy-btn');
+        navigator.clipboard.writeText(code).then(function() {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        }).catch(function() {
+            // fallback for older browsers
+            var ta = document.createElement('textarea');
+            ta.value = code;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(function() {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+</script>
+
+</body>
+</html>
