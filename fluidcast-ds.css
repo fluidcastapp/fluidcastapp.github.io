@@ -458,13 +458,13 @@ html.theme-light .ds-white { background: var(--surface); }
   font-weight: 800;
   font-size: 2rem;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--fg);
   margin-bottom: 18px;
 }
 .ds-doc h2 {
   font-weight: 700;
   font-size: 1.25rem;
-  color: #fff;
+  color: var(--fg);
   margin-top: 32px;
   margin-bottom: 4px;
   letter-spacing: -0.01em;
@@ -477,7 +477,7 @@ html.theme-light .ds-white { background: var(--surface); }
 }
 .ds-doc ul, .ds-doc ol { padding-left: 22px; }
 .ds-doc li { margin-bottom: 6px; }
-.ds-doc strong { color: #fff; }
+.ds-doc strong { color: var(--fg); }
 .ds-doc em { color: var(--fg3); }
 .ds-doc a { color: var(--cyan-400); text-decoration: underline; text-underline-offset: 2px; }
 .ds-doc a:hover { color: var(--cyan-300); }
@@ -490,7 +490,7 @@ html.theme-light .ds-white { background: var(--surface); }
   font-size: 0.95rem;
   color: var(--fg2);
 }
-.ds-doc th { background: rgba(255,255,255,0.03); color: #fff; font-weight: 600; }
+.ds-doc th { background: rgba(255,255,255,0.05); color: var(--fg); font-weight: 600; }
 @media (max-width: 600px) {
   .ds-doc { padding: 32px 20px; }
   .ds-doc-wrap { padding-top: 80px; }

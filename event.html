@@ -146,8 +146,55 @@
             .deal-value { font-size: 2rem; }
         }
     </style>
+    <script>
+      (function() {
+        const saved = localStorage.getItem('theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        let theme;
+
+        if (saved === 'system') {
+          theme = prefersLight ? 'light' : 'dark';
+        } else if (saved) {
+          theme = saved;
+        } else {
+          theme = prefersLight ? 'light' : 'dark';
+        }
+
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-theme-preference', saved || 'system');
+      })();
+    </script>
+    <style>
+      .theme-toggle {
+        appearance: none;
+        -webkit-appearance: none;
+        background: transparent;
+        border: 1px solid var(--border-mid);
+        color: var(--fg);
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-lg);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: background-color 0.2s, border-color 0.2s;
+        padding: 0;
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        z-index: 999;
+      }
+      .theme-toggle:hover {
+        background: var(--overlay);
+        border-color: var(--border-subtle);
+      }
+    </style>
+
 </head>
 <body>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme"></button>
 
 <header class="ds-header">
     <nav class="ds-nav">
@@ -281,6 +328,66 @@
         });
     }
 </script>
+
+        <script>
+      (function() {
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const systemMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+
+        function getOSTheme() {
+          return systemMediaQuery.matches ? 'light' : 'dark';
+        }
+
+        function updateIcon() {
+          const preference = html.getAttribute('data-theme-preference');
+          if (preference === 'system') {
+            toggle.textContent = '🌓';
+          } else if (preference === 'light') {
+            toggle.textContent = '☀️';
+          } else {
+            toggle.textContent = '🌙';
+          }
+          toggle.title = `Theme: ${preference === 'system' ? 'System (auto)' : preference}`;
+        }
+
+        function applyTheme(preference) {
+          html.setAttribute('data-theme-preference', preference);
+          if (preference === 'system') {
+            const osTheme = getOSTheme();
+            html.setAttribute('data-theme', osTheme);
+            localStorage.removeItem('theme');
+          } else {
+            html.setAttribute('data-theme', preference);
+            localStorage.setItem('theme', preference);
+          }
+          updateIcon();
+        }
+
+        toggle.addEventListener('click', () => {
+          const current = html.getAttribute('data-theme-preference');
+          let newPreference;
+          if (current === 'dark') {
+            newPreference = 'light';
+          } else if (current === 'light') {
+            newPreference = 'system';
+          } else {
+            newPreference = 'dark';
+          }
+          applyTheme(newPreference);
+        });
+
+        systemMediaQuery.addEventListener('change', (e) => {
+          const preference = html.getAttribute('data-theme-preference');
+          if (preference === 'system') {
+            const newTheme = e.matches ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+          }
+        });
+
+        updateIcon();
+      })();
+    </script>
 
 </body>
 </html>
