@@ -348,11 +348,13 @@
             .shot-media img { max-width: 220px; }
             .shot-text { display: flex; flex-direction: column; align-items: center; }
             .shot-text p { margin: 0 auto; }
+            /* Stack pricing into one column (flex:1 otherwise squishes them into a row) */
+            .price-grid { flex-direction: column; align-items: center; }
+            .price-card { flex: none; width: 100%; min-width: 0; max-width: 400px; }
         }
         @media (max-width: 600px) {
             .hero { padding-top: 100px; }
             .device { width: 208px; max-width: 70%; }
-            .price-card { min-width: 0; width: 100%; }
             .bento { grid-template-columns: 1fr; }
             .feat-card.bento-lg { grid-column: span 1; }
         }
