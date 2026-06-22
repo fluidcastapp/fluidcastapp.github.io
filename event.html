@@ -134,10 +134,15 @@
         .btn-lifetime { background: var(--gradient-violet); box-shadow: 0 8px 24px -6px rgba(91,107,224,0.5); }
         .btn-lifetime:hover { box-shadow: 0 14px 36px -8px rgba(91,107,224,0.6); }
 
+        @media (max-width: 760px) {
+            /* Stack deal cards (flex:1 otherwise squishes them into a row) */
+            .deals-grid { flex-direction: column; align-items: center; }
+            .deal-card { flex: none; width: 100%; min-width: 0; max-width: 420px; }
+        }
         @media (max-width: 600px) {
             .hero { padding: 116px 20px 56px; }
             .deals { padding: 48px 20px 64px; }
-            .deal-card { min-width: 0; width: 100%; padding: 28px 22px; }
+            .deal-card { padding: 28px 22px; }
             .deal-value { font-size: 2rem; }
         }
     </style>
