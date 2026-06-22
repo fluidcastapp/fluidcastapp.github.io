@@ -1,12 +1,12 @@
 /* ============================================================
    FluidCast Design System — Site Stylesheet
    Derived from the FluidCast Design System (colors_and_type.css)
-   Dark-first brand with light marketing sections.
+   Dark-first brand with light mode support via OS detection + toggle.
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-/* ── Tokens ── */
+/* ── Tokens — Dark Theme (default) ── */
 :root {
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'Fira Code', monospace;
@@ -70,6 +70,45 @@
   --glow-cyan: 0 8px 24px -6px rgba(61,208,240,0.5);
 }
 
+/* ── Light Mode Theme ── */
+html[data-theme="light"],
+html.theme-light {
+  /* Surfaces — cool, near-white with a faint blue cast */
+  --bg:       #F4F7FB;
+  --surface:  #FFFFFF;
+  --elevated: #FFFFFF;
+  --overlay:  #F0F4FA;
+
+  /* Foreground — dark navy ramp */
+  --fg:       #0E1726;
+  --fg2:      #3C4A60;
+  --fg3:      #6B7A99;
+  --fg4:      #9FB0C8;
+
+  --border-subtle: #E2E8F0;
+  --border-mid:    #CBD8E8;
+
+  /* Brand on light — lean blue for contrast */
+  --cyan-300: #0EABC8;
+  --cyan-400: #1ABCD8;
+  --cyan-500: #1ABCD8;
+  --blue-500: #1E4FE0;
+  --blue-600: #1740C0;
+  --blue-700: #1032A0;
+
+  /* Gradients */
+  --gradient-text:   linear-gradient(135deg, #1ABCD8 0%, #1E4FE0 60%, #1740C0 100%);
+  --gradient-hero:   linear-gradient(160deg, #FFFFFF 0%, #EAF2FB 55%, #E0EEFA 100%);
+  --gradient-brand:  linear-gradient(135deg, #1E4FE0, #1740C0);
+
+  /* Shadows — soft, cool-tinted */
+  --shadow-sm:     0 1px 3px rgba(14,23,38,0.06), 0 1px 2px rgba(14,23,38,0.04);
+  --shadow-md:     0 4px 16px rgba(14,23,38,0.08);
+  --shadow-lg:     0 16px 48px -12px rgba(14,23,38,0.16);
+  --shadow-card:   0 4px 20px rgba(14,23,38,0.08);
+  --glow-cyan:     0 8px 24px -8px rgba(30,79,224,0.45);
+}
+
 /* ── Reset / Base ── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -119,6 +158,11 @@ a { color: var(--cyan-400); }
   backdrop-filter: saturate(180%) blur(16px);
   -webkit-backdrop-filter: saturate(180%) blur(16px);
   border-bottom: 1px solid var(--border-subtle);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+html[data-theme="light"] .ds-header,
+html.theme-light .ds-header {
+  background: rgba(244,247,251,0.92);
 }
 .ds-nav {
   max-width: 1160px;
@@ -190,6 +234,10 @@ a { color: var(--cyan-400); }
 .ds-burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
 .ds-burger.active span:nth-child(2) { opacity: 0; }
 .ds-burger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+html[data-theme="light"] .ds-burger span,
+html.theme-light .ds-burger span {
+  background: #0E1726;
+}
 
 @media (max-width: 860px) {
   .ds-burger { display: flex; }
@@ -217,6 +265,9 @@ a { color: var(--cyan-400); }
     text-align: center;
     box-shadow: none;
   }
+  .ds-nav-links .theme-toggle {
+    margin: 14px 24px;
+  }
 }
 
 /* ── Buttons ── */
@@ -241,12 +292,24 @@ a { color: var(--cyan-400); }
   box-shadow: var(--glow-cyan);
 }
 .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px -8px rgba(61,208,240,0.6); }
+html[data-theme="light"] .ds-btn-primary:hover,
+html.theme-light .ds-btn-primary:hover { box-shadow: 0 14px 36px -8px rgba(30,79,224,0.4); }
 .ds-btn-secondary {
   background: rgba(255,255,255,0.10);
   color: #fff;
   border: 1.5px solid rgba(255,255,255,0.25);
 }
 .ds-btn-secondary:hover { transform: translateY(-2px); background: rgba(255,255,255,0.16); }
+html[data-theme="light"] .ds-btn-secondary,
+html.theme-light .ds-btn-secondary {
+  background: rgba(14,23,38,0.08);
+  color: #0E1726;
+  border: 1.5px solid rgba(14,23,38,0.2);
+}
+html[data-theme="light"] .ds-btn-secondary:hover,
+html.theme-light .ds-btn-secondary:hover {
+  background: rgba(14,23,38,0.14);
+}
 .ds-btn-light {
   background: #fff;
   color: var(--light-text);
@@ -275,6 +338,17 @@ a { color: var(--cyan-400); }
   color: #fff;
   border: none;
   box-shadow: var(--glow-cyan);
+}
+html[data-theme="light"] .ds-chip,
+html.theme-light .ds-chip {
+  background: rgba(14,23,38,0.06);
+  color: #3C4A60;
+  border: 1px solid #E2E8F0;
+}
+html[data-theme="light"] .ds-chip-active,
+html.theme-light .ds-chip-active {
+  background: var(--gradient-brand);
+  color: #fff;
 }
 
 /* ── Pro / Gold badge ── */
@@ -310,6 +384,10 @@ a { color: var(--cyan-400); }
 }
 .ds-section-title.on-dark { color: #fff; }
 .ds-section-sub.on-dark { color: var(--fg3); }
+html[data-theme="light"] .ds-light,
+html.theme-light .ds-light { background: var(--bg); }
+html[data-theme="light"] .ds-white,
+html.theme-light .ds-white { background: var(--surface); }
 
 /* ── Footer ── */
 .ds-footer {

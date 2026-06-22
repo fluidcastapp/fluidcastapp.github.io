@@ -30,6 +30,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="fluidcast-ds.css">
+    <script>
+      // Detect and apply theme on page load (runs before rendering)
+      (function() {
+        const saved = localStorage.getItem('theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        let theme;
+
+        if (saved === 'system') {
+          theme = prefersLight ? 'light' : 'dark';
+        } else if (saved) {
+          theme = saved;
+        } else {
+          theme = prefersLight ? 'light' : 'dark';
+        }
+
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-theme-preference', saved || 'system');
+      })();
+    </script>
     <style>
         /* ── Hero (two-column with device) ── */
         .hero {
@@ -325,6 +344,29 @@
         .easter-popup-button { display: block; width: 100%; text-align: center; background: var(--gradient-brand); color: #fff; padding: 14px; border-radius: var(--radius-pill); text-decoration: none; font-weight: 700; border: none; cursor: pointer; box-shadow: var(--glow-cyan); transition: transform 0.2s, filter 0.2s; }
         .easter-popup-button:hover { transform: translateY(-2px); filter: brightness(1.05); }
 
+        /* ── Theme Toggle ── */
+        .theme-toggle {
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            border: 1px solid var(--border-mid);
+            color: var(--fg);
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: background-color 0.2s, border-color 0.2s;
+            padding: 0;
+        }
+        .theme-toggle:hover {
+            background: var(--overlay);
+            border-color: var(--border-subtle);
+        }
+
         /* ── Responsive ── */
         @media (max-width: 900px) {
             .hero { padding-top: 112px; }
@@ -436,6 +478,7 @@
                 <li><a href="https://www.reddit.com/r/fluidcast" target="_blank" rel="noopener noreferrer">Reddit</a></li>
                 <li><a href="/web">Web Player</a></li>
                 <li><a href="#download" class="ds-nav-cta">Download</a></li>
+                <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme"></button></li>
             </ul>
         </nav>
     </header>
@@ -721,6 +764,66 @@
     </footer>
 
     <script>
+        // Theme toggle with 3-way cycle: Dark → Light → System (OS preference)
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            const systemMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+
+            function getOSTheme() {
+                return systemMediaQuery.matches ? 'light' : 'dark';
+            }
+
+            function updateIcon() {
+                const preference = html.getAttribute('data-theme-preference');
+                if (preference === 'system') {
+                    toggle.textContent = '🌓';
+                } else if (preference === 'light') {
+                    toggle.textContent = '☀️';
+                } else {
+                    toggle.textContent = '🌙';
+                }
+                toggle.title = `Theme: ${preference === 'system' ? 'System (auto)' : preference}`;
+            }
+
+            function applyTheme(preference) {
+                html.setAttribute('data-theme-preference', preference);
+                if (preference === 'system') {
+                    const osTheme = getOSTheme();
+                    html.setAttribute('data-theme', osTheme);
+                    localStorage.removeItem('theme');
+                } else {
+                    html.setAttribute('data-theme', preference);
+                    localStorage.setItem('theme', preference);
+                }
+                updateIcon();
+            }
+
+            toggle.addEventListener('click', () => {
+                const current = html.getAttribute('data-theme-preference');
+                let newPreference;
+                if (current === 'dark') {
+                    newPreference = 'light';
+                } else if (current === 'light') {
+                    newPreference = 'system';
+                } else {
+                    newPreference = 'dark';
+                }
+                applyTheme(newPreference);
+            });
+
+            // Listen for OS theme changes and apply if in system mode
+            systemMediaQuery.addEventListener('change', (e) => {
+                const preference = html.getAttribute('data-theme-preference');
+                if (preference === 'system') {
+                    const newTheme = e.matches ? 'light' : 'dark';
+                    html.setAttribute('data-theme', newTheme);
+                }
+            });
+
+            updateIcon();
+        })();
+
         // Burger menu
         const burgerMenu = document.getElementById('burger-menu');
         const navLinks = document.getElementById('nav-links');
@@ -730,6 +833,12 @@
         });
         navLinks.querySelectorAll('a').forEach(item => {
             item.addEventListener('click', () => {
+                burgerMenu.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        navLinks.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
                 burgerMenu.classList.remove('active');
                 navLinks.classList.remove('active');
             });
