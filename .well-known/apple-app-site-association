@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "7NQZE8JN44.com.FluidCastApp.FluidCast",
+        "paths": [
+          "/podcast/",
+          "/podcast/*"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="apple-itunes-app" content="app-id=6754508580">
+    <meta name="description" content="Open this podcast in FluidCast.">
+    <title>Open Podcast in FluidCast</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="stylesheet" href="../fluidcast-ds.css">
+    <script>
+      (function() {
+        const saved = localStorage.getItem('theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        const theme = saved && saved !== 'system' ? saved : (prefersLight ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <style>
+        body {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background: var(--gradient-hero);
+        }
+        .open-card {
+            width: min(100%, 520px);
+            padding: 40px 32px;
+            text-align: center;
+            background: var(--elevated);
+            border: 1px solid var(--border-mid);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+        }
+        .open-card img {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 22px;
+            border-radius: 18px;
+            box-shadow: var(--glow-cyan);
+        }
+        .open-card h1 {
+            margin-bottom: 10px;
+            font-size: clamp(1.7rem, 6vw, 2.3rem);
+            line-height: 1.15;
+        }
+        .open-card p {
+            margin: 0 auto 26px;
+            color: var(--fg2);
+            max-width: 390px;
+        }
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .status {
+            min-height: 24px;
+            margin-top: 22px;
+            color: var(--fg3);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <main class="open-card">
+        <img src="../images/fluidcasticonweb.jpg" alt="FluidCast logo">
+        <p class="ds-eyebrow">Shared podcast</p>
+        <h1>Open in <span class="ds-text-gradient">FluidCast</span></h1>
+        <p id="message">FluidCast is the easiest way to listen to this podcast across your devices.</p>
+        <div class="actions">
+            <a class="ds-btn ds-btn-primary" href="https://apps.apple.com/app/id6754508580">Get FluidCast</a>
+            <a class="ds-btn ds-btn-secondary" href="../">Visit Website</a>
+        </div>
+        <div class="status" id="status" role="status" aria-live="polite"></div>
+    </main>
+
+    <script>
+      (function() {
+        const APP_STORE_URL = 'https://apps.apple.com/app/id6754508580';
+        const WEBSITE_URL = '../';
+        const params = new URLSearchParams(window.location.search);
+        const podcastID = params.get('id') || '';
+        const hasValidPodcastID = /^\d+$/.test(podcastID);
+        const ua = navigator.userAgent || '';
+        const isIPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+        const isIOS = /iPhone|iPad|iPod/.test(ua) || isIPadOS;
+        const status = document.getElementById('status');
+
+        if (!hasValidPodcastID) {
+          status.textContent = 'This podcast link is incomplete. Returning to FluidCast…';
+          window.setTimeout(function() { window.location.replace(WEBSITE_URL); }, 700);
+          return;
+        }
+
+        if (isIOS) {
+          status.textContent = 'FluidCast is not installed. Opening the App Store…';
+          window.setTimeout(function() { window.location.replace(APP_STORE_URL); }, 350);
+        } else {
+          status.textContent = 'FluidCast is available for iOS, macOS, Android, Windows, and Linux.';
+        }
+      })();
+    </script>
+</body>
+</html>
