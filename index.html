@@ -305,13 +305,14 @@
         .download-badge-link img { height: 58px; width: auto; }
         .download-direct-btn {
             display: inline-flex; align-items: center; gap: 9px;
-            padding: 14px 26px; background: var(--elevated);
-            color: #fff; border: 1px solid var(--border-mid);
+            padding: 14px 26px; background: var(--gradient-brand);
+            color: #fff; border: 1px solid rgba(255,255,255,0.18);
             border-radius: var(--radius-lg);
             text-decoration: none; font-weight: 600; font-size: 15px;
-            transition: background 0.2s, transform 0.2s, border-color 0.2s;
+            box-shadow: var(--glow-cyan);
+            transition: transform 0.2s, filter 0.2s, border-color 0.2s;
         }
-        .download-direct-btn:hover { background: var(--overlay); transform: translateY(-2px); border-color: var(--cyan-500); }
+        .download-direct-btn:hover { filter: brightness(1.05); transform: translateY(-2px); border-color: rgba(255,255,255,0.3); }
         .download-direct-btn svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
         .windows-download-options { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; }
         .windows-download-options ms-store-badge { transform: scale(1.18); transform-origin: left center; }
@@ -743,7 +744,7 @@
                         <option value="ios">iOS &amp; Mac — App Store</option>
                         <option value="android">Android — Google Play</option>
                         <option value="windows">Windows</option>
-                        <option value="linux">Linux — Direct download</option>
+                        <option value="linux">Linux — AppImage</option>
                     </select>
                 </div>
             </div>
@@ -770,7 +771,7 @@
                 <a href="terms.html">Terms of Service</a>
                 <a href="refund.html">Refund Policy</a>
             </div>
-            <p class="ds-footer-copy">&copy; 2025 Joseph Bishop. All rights reserved.</p>
+            <p class="ds-footer-copy">&copy; 2026 Joseph Bishop. All rights reserved.</p>
             <p class="ds-footer-copy">Contact: <a href="mailto:info@fluidcastapp.com">info@fluidcastapp.com</a></p>
         </div>
     </footer>
@@ -899,7 +900,7 @@
             ios: '<a href="https://apps.apple.com/us/app/fluidcast/id6754508580" class="download-badge-link" target="_blank" rel="noopener noreferrer"><img src="images/appstoredownload.svg" alt="Download on the App Store"></a>',
             android: '<a href="https://play.google.com/store/apps/details?id=com.FluidCastApp.FluidCast&hl=en" class="download-badge-link" target="_blank" rel="noopener noreferrer"><img src="images/playstoredownload.svg" alt="Get it on Google Play"></a>',
             windows: '<div class="windows-download-options"><a href="https://github.com/fluidcastapp/fluidcastapp.github.io/releases/latest/download/FluidCast-x86_64-windows.exe" class="download-direct-btn" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>Download Installer</a><ms-store-badge productid="9njb92lmw1px" cid="website" productname="FluidCast" window-mode="direct" theme="dark" size="small" language="en-gb" animation="on"></ms-store-badge></div>',
-            linux: '<a href="https://github.com/fluidcastapp/fluidcastapp.github.io/releases/latest/download/FluidCast-x86_64-linux.AppImage" class="download-direct-btn" target="_blank" rel="noopener noreferrer">Download for Linux</a>'
+            linux: '<a href="https://github.com/fluidcastapp/fluidcastapp.github.io/releases/latest/download/FluidCast-x86_64-linux.AppImage" class="download-direct-btn" target="_blank" rel="noopener noreferrer">Download AppImage</a>'
         };
 
         function renderPrimaryDownload(platform) {
