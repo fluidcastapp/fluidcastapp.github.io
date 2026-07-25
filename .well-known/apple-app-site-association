@@ -6,7 +6,9 @@
         "appID": "7NQZE8JN44.com.FluidCastApp.FluidCast",
         "paths": [
           "/podcast/",
-          "/podcast/*"
+          "/podcast/*",
+          "/episode/",
+          "/episode/*"
         ]
       }
     ]

@@ -1,11 +1,13 @@
 # Universal Links deployment
 
-This repository contains the public pieces of FluidCast podcast sharing:
+This repository contains the public pieces of FluidCast podcast and episode
+sharing:
 
-- `/.well-known/apple-app-site-association` associates `/podcast/` links with
-  the production iOS app.
-- `/podcast/index.html` is the fallback. On iPhone and iPad it opens the App
-  Store listing; on desktop it remains on the FluidCast website.
+- `/.well-known/apple-app-site-association` associates `/podcast/` and
+  `/episode/` links with the production iOS app.
+- `/podcast/index.html` and `/episode/index.html` are the fallbacks. On iPhone
+  and iPad they open the App Store listing; on desktop they remain on the
+  FluidCast website.
 - `.nojekyll` ensures the `.well-known` directory is included in the published
   GitHub Pages output.
 
