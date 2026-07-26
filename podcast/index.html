@@ -84,6 +84,7 @@
     <script>
       (function() {
         const APP_STORE_URL = 'https://apps.apple.com/app/id6754508580';
+        const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.FluidCastApp.FluidCast';
         const WEBSITE_URL = '../';
         const params = new URLSearchParams(window.location.search);
         const podcastID = params.get('id') || '';
@@ -93,8 +94,11 @@
         const ua = navigator.userAgent || '';
         const isIPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
         const isIOS = /iPhone|iPad|iPod/.test(ua) || isIPadOS;
+        const isAndroid = /Android/i.test(ua);
+        const storeURL = isAndroid ? PLAY_STORE_URL : APP_STORE_URL;
         const status = document.getElementById('status');
         const openApp = document.getElementById('open-app');
+        openApp.href = storeURL;
 
         function openInstalledApp(event) {
           event.preventDefault();
@@ -104,7 +108,7 @@
           if (hasValidStorefront) appParams.set('storefront', storefront.toLowerCase());
           const appURL = 'fluidcast://podcast/?' + appParams.toString();
           const fallbackTimer = window.setTimeout(function() {
-            window.location.assign(APP_STORE_URL);
+            window.location.assign(storeURL);
           }, 1200);
 
           const cancelFallback = function() { window.clearTimeout(fallbackTimer); };
@@ -121,11 +125,13 @@
           return;
         }
 
-        if (isIOS) {
-          status.textContent = 'Tap Open FluidCast to continue. If it is not installed, the App Store will open.';
+        if (isIOS || isAndroid) {
+          const storeName = isAndroid ? 'Google Play' : 'the App Store';
+          status.textContent = 'Tap Open FluidCast to continue. If it is not installed, ' + storeName + ' will open.';
           openApp.addEventListener('click', openInstalledApp);
         } else {
           openApp.textContent = 'Get FluidCast';
+          openApp.href = WEBSITE_URL + '#download';
           status.textContent = 'FluidCast is available for iOS, macOS, Android, Windows, and Linux.';
         }
       })();

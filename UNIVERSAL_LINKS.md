@@ -5,10 +5,10 @@ sharing:
 
 - `/.well-known/apple-app-site-association` associates `/podcast/` and
   `/episode/` links with the production iOS app.
-- `/podcast/index.html` and `/episode/index.html` are the fallbacks. On iPhone
-  and iPad, their **Open FluidCast** action first invokes the matching
-  `fluidcast://` route and falls back to the App Store if the app does not
-  open; on desktop they remain on the FluidCast website.
+- `/podcast/index.html` and `/episode/index.html` are the fallbacks. On iPhone,
+  iPad, and Android, their **Open FluidCast** action first invokes the matching
+  `fluidcast://` route and falls back to the App Store or Google Play if the
+  app does not open; on desktop they remain on the FluidCast website.
 - `.nojekyll` ensures the `.well-known` directory is included in the published
   GitHub Pages output.
 
