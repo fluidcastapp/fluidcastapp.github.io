@@ -75,7 +75,7 @@
         <h1>Open in <span class="ds-text-gradient">FluidCast</span></h1>
         <p>FluidCast is the easiest way to listen to this episode across your devices.</p>
         <div class="actions">
-            <a class="ds-btn ds-btn-primary" href="https://apps.apple.com/app/id6754508580">Get FluidCast</a>
+            <a class="ds-btn ds-btn-primary" id="open-app" href="https://apps.apple.com/app/id6754508580">Open FluidCast</a>
             <a class="ds-btn ds-btn-secondary" href="../">Visit Website</a>
         </div>
         <div class="status" id="status" role="status" aria-live="polite"></div>
@@ -88,11 +88,33 @@
         const params = new URLSearchParams(window.location.search);
         const podcastID = params.get('podcast') || '';
         const episodeID = params.get('id') || '';
+        const storefront = params.get('storefront') || '';
         const hasValidLink = /^\d+$/.test(podcastID) && /^[a-f0-9]{64}$/i.test(episodeID);
+        const hasValidStorefront = /^[a-z]{2}$/i.test(storefront);
         const ua = navigator.userAgent || '';
         const isIPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
         const isIOS = /iPhone|iPad|iPod/.test(ua) || isIPadOS;
         const status = document.getElementById('status');
+        const openApp = document.getElementById('open-app');
+
+        function openInstalledApp(event) {
+          event.preventDefault();
+          status.textContent = 'Opening FluidCast…';
+
+          const appParams = new URLSearchParams({ podcast: podcastID, id: episodeID });
+          if (hasValidStorefront) appParams.set('storefront', storefront.toLowerCase());
+          const appURL = 'fluidcast://episode/?' + appParams.toString();
+          const fallbackTimer = window.setTimeout(function() {
+            window.location.assign(APP_STORE_URL);
+          }, 1200);
+
+          const cancelFallback = function() { window.clearTimeout(fallbackTimer); };
+          document.addEventListener('visibilitychange', function() {
+            if (document.hidden) cancelFallback();
+          }, { once: true });
+          window.addEventListener('pagehide', cancelFallback, { once: true });
+          window.location.assign(appURL);
+        }
 
         if (!hasValidLink) {
           status.textContent = 'This episode link is incomplete. Returning to FluidCast…';
@@ -101,9 +123,10 @@
         }
 
         if (isIOS) {
-          status.textContent = 'FluidCast is not installed. Opening the App Store…';
-          window.setTimeout(function() { window.location.replace(APP_STORE_URL); }, 350);
+          status.textContent = 'Tap Open FluidCast to continue. If it is not installed, the App Store will open.';
+          openApp.addEventListener('click', openInstalledApp);
         } else {
+          openApp.textContent = 'Get FluidCast';
           status.textContent = 'FluidCast is available for iOS, macOS, Android, Windows, and Linux.';
         }
       })();
