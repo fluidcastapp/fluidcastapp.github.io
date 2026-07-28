@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="cookies.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-80XZVYXSQX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-80XZVYXSQX', {
+            'anonymize_ip': true,
+            'allow_google_signals': false
+        });
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Get FluidCast for iPhone, iPad, Mac, Android, Windows, or Linux.">
+    <title>Download FluidCast</title>
+    <meta property="og:title" content="Download FluidCast">
+    <meta property="og:description" content="Get FluidCast for iPhone, iPad, Mac, Android, Windows, or Linux.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fluidcastapp.com/download.html">
+    <meta property="og:image" content="https://fluidcastapp.com/images/smcard.jpg">
+    <meta property="og:image:alt" content="FluidCast — podcast player screenshot">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Download FluidCast">
+    <meta name="twitter:description" content="Get FluidCast for iPhone, iPad, Mac, Android, Windows, or Linux.">
+    <meta name="twitter:image" content="https://fluidcastapp.com/images/smcard.jpg">
+    <link rel="image_src" href="https://fluidcastapp.com/images/smcard.jpg">
+    <meta name="apple-itunes-app" content="app-id=6754508580">
+    <link rel="stylesheet" href="fluidcast-ds.css">
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 32px 18px;
+            background:
+                radial-gradient(circle at top, rgba(61, 208, 240, 0.16), transparent 42%),
+                linear-gradient(135deg, #07111f 0%, #101935 100%);
+            color: var(--fg);
+            font-family: var(--font-sans);
+        }
+
+        .redirect-card {
+            width: min(100%, 560px);
+            padding: 40px 28px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 28px;
+            background: rgba(8, 12, 22, 0.82);
+            box-shadow: 0 20px 70px rgba(0,0,0,0.32);
+            text-align: center;
+            backdrop-filter: blur(18px);
+        }
+
+        .redirect-card img {
+            width: 84px;
+            height: 84px;
+            border-radius: 22px;
+            margin-bottom: 14px;
+        }
+
+        .redirect-card h1 {
+            margin: 6px 0 10px;
+            font-size: clamp(1.55rem, 2.3vw, 2.1rem);
+            line-height: 1.12;
+            letter-spacing: -0.02em;
+        }
+
+        .redirect-card p {
+            color: var(--fg2);
+            line-height: 1.65;
+            margin: 0 0 20px;
+            font-size: 1rem;
+        }
+
+        .redirect-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .redirect-actions a {
+            min-width: 200px;
+        }
+
+        .helper {
+            margin-top: 16px;
+            font-size: 0.95rem;
+            color: var(--fg3);
+        }
+    </style>
+</head>
+<body>
+    <main class="redirect-card" role="main">
+        <img src="images/fluidcasticonweb.jpg" alt="FluidCast logo">
+        <p class="ds-eyebrow">Get FluidCast</p>
+        <h1>Taking you to the right download</h1>
+        <p id="message">We’re detecting your device so we can send you to the correct app store or download page.</p>
+        <div class="redirect-actions">
+            <a id="primary-action" href="index.html#download" class="ds-btn ds-btn-primary">Continue to downloads</a>
+            <a href="index.html" class="ds-btn ds-btn-secondary">Visit website</a>
+        </div>
+        <p class="helper" id="helper">If you are not redirected automatically, use the button above.</p>
+    </main>
+
+    <script>
+        (function () {
+            const appStoreUrl = 'https://apps.apple.com/us/app/fluidcast/id6754508580';
+            const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.FluidCastApp.FluidCast&hl=en';
+            const websiteUrl = 'index.html#download';
+            const message = document.getElementById('message');
+            const helper = document.getElementById('helper');
+            const primaryAction = document.getElementById('primary-action');
+            const ua = navigator.userAgent || '';
+            const platform = navigator.platform || '';
+            const isIOS = /iPhone|iPad|iPod/.test(ua) || (platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            const isMac = /Macintosh|MacIntel|MacPPC|Mac68K/.test(ua) || platform === 'MacIntel';
+            const isAndroid = /Android/i.test(ua);
+            const isWindows = /Win32|Win64|Windows/i.test(ua) || /Win/.test(platform);
+            const isLinux = /Linux|X11/.test(ua) && !isAndroid;
+
+            if (isIOS) {
+                message.textContent = 'iPhone and iPad users are being sent to the App Store.';
+                helper.textContent = 'If nothing happens, tap the button above.';
+                primaryAction.href = appStoreUrl;
+                primaryAction.textContent = 'Open the App Store';
+                window.setTimeout(function () {
+                    window.location.assign(appStoreUrl);
+                }, 800);
+                return;
+            }
+
+            if (isMac) {
+                message.textContent = 'Mac users are being sent to the Mac App Store.';
+                helper.textContent = 'If nothing happens, tap the button above.';
+                primaryAction.href = appStoreUrl;
+                primaryAction.textContent = 'Open the Mac App Store';
+                window.setTimeout(function () {
+                    window.location.assign(appStoreUrl);
+                }, 800);
+                return;
+            }
+
+            if (isAndroid) {
+                message.textContent = 'Android users are being sent to Google Play.';
+                helper.textContent = 'If nothing happens, tap the button above.';
+                primaryAction.href = playStoreUrl;
+                primaryAction.textContent = 'Open Google Play';
+                window.setTimeout(function () {
+                    window.location.assign(playStoreUrl);
+                }, 800);
+                return;
+            }
+
+            if (isWindows || isLinux) {
+                message.textContent = 'Windows and Linux users will be sent to the website download options.';
+                helper.textContent = 'If nothing happens, use the button above.';
+                primaryAction.href = websiteUrl;
+                primaryAction.textContent = 'Open downloads';
+                window.setTimeout(function () {
+                    window.location.assign(websiteUrl);
+                }, 800);
+                return;
+            }
+
+            message.textContent = 'We could not detect your device automatically, so here are the available download options.';
+            helper.textContent = 'Choose the option that matches your device.';
+            primaryAction.href = websiteUrl;
+            primaryAction.textContent = 'Open downloads';
+        })();
+    </script>
+</body>
+</html>
