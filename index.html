@@ -122,7 +122,18 @@
             max-width: 480px;
             margin-bottom: 30px;
         }
-        .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 30px; }
+        .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 30px; align-items: center; }
+        .hero-web-player { position: relative; display: inline-block; }
+        .hero-web-player-note {
+            position: absolute;
+            left: 0;
+            top: calc(100% + 8px);
+            font-size: 0.82rem;
+            color: var(--fg2);
+            opacity: 0.85;
+            margin-left: 0;
+            white-space: nowrap;
+        }
         .hero-platforms { display: flex; gap: 9px; flex-wrap: wrap; }
 
         /* Device frame */
@@ -489,7 +500,7 @@
                 <li><a href="#pricing">Pro</a></li>
                 <li><a href="https://medium.com/@fluidcastapp" target="_blank" rel="noopener noreferrer">News</a></li>
                 <li><a href="https://www.reddit.com/r/fluidcast" target="_blank" rel="noopener noreferrer">Reddit</a></li>
-                <li><a href="/web">Web Player</a></li>
+                <li><a href="/web">Web Player (Chrome recommended)</a></li>
                 <li><a href="#download" class="ds-nav-cta">Download</a></li>
                 <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme"></button></li>
             </ul>
@@ -511,7 +522,10 @@
                 <p class="sub">Listen, sync, and enjoy your favourite podcasts seamlessly across all your devices.</p>
                 <div class="hero-ctas">
                     <a href="#download" class="ds-btn ds-btn-primary">Download Now</a>
-                    <a href="/web" class="ds-btn ds-btn-secondary">Web Player</a>
+                    <div class="hero-web-player">
+                        <a href="/web" class="ds-btn ds-btn-secondary">Web Player</a>
+                        <span class="hero-web-player-note">Chrome recommended</span>
+                    </div>
                 </div>
                 <div class="hero-platforms">
                     <span class="ds-chip">iOS</span>
