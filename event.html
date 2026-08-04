@@ -90,6 +90,7 @@
             position: relative; overflow: hidden;
             transition: transform 0.25s, box-shadow 0.25s;
         }
+        .deal-top { min-height: 300px; }
         .deal-card:hover { transform: translateY(-5px); }
         .deal-card.deal-trial { border-color: rgba(61,208,240,0.4); }
         .deal-card.deal-lifetime { border-color: rgba(124,140,248,0.5); }
@@ -146,7 +147,8 @@
             padding: 10px 12px; margin: 16px 0 20px;
         }
         .deal-android strong { color: var(--fg1); }
-        .btn-deal { margin-top: auto; width: 100%; }
+        .btn-deal { width: 100%; }
+        .btn-bottom { margin-top: auto; width: 100%; }
         .deal-card .btn-deal + .deal-android { margin-top: 12px; }
         .btn-lifetime { background: var(--gradient-violet); box-shadow: 0 8px 24px -6px rgba(91,107,224,0.5); }
         .btn-lifetime:hover { box-shadow: 0 14px 36px -8px rgba(91,107,224,0.6); }
@@ -174,6 +176,7 @@
             .deals { padding: 48px 20px 64px; }
             .deal-card { padding: 28px 22px; }
             .deal-value { font-size: 2rem; }
+            .deal-top { min-height: 0; }
         }
     </style>
     <script>
@@ -262,44 +265,50 @@
 
         <!-- Deal 1: Pro Annual Offer -->
         <div class="deal-card deal-trial">
-            <div class="deal-icon">🎙️</div>
-            <span class="deal-label">Pro Annual</span>
-            <h2>Up to 35% Off First Year</h2>
-            <div class="deal-value">Save Up To 35%</div>
-            <p class="deal-sub">Pro Annual — up to 35% off your first year</p>
-            <p class="deal-desc">
-                14-day trial included. Start your trial, then continue at the discounted first-year rate.
-            </p>
+            <div class="deal-top">
+                <div class="deal-icon">🎙️</div>
+                <span class="deal-label">Pro Annual</span>
+                <h2>Up to 35% Off First Year</h2>
+                <div class="deal-value">Save Up To 35%</div>
+                <p class="deal-sub">Pro Annual — up to 35% off your first year</p>
+                <p class="deal-desc">
+                    14-day trial included. Start your trial, then continue at the discounted first-year rate.
+                </p>
+            </div>
             <div class="promo-code-block">
                 <span class="promo-code-text" id="promo-code-annual">SUMMER2026</span>
                 <button class="copy-btn" id="copy-btn-annual" onclick="copyAnnualCode()">Copy</button>
             </div>
             <a href="https://apps.apple.com/redeem?ctx=offercodes&id=6754508580&code=SUMMER2026" target="_blank" rel="noopener noreferrer" class="ds-btn ds-btn-primary btn-deal">Redeem on iOS / Mac</a>
+            <p class="deal-fine">&nbsp;</p>
             <p class="deal-android">
                 <strong>Android users:</strong> The discount is applied automatically at checkout — no code needed.
             </p>
-            <a href="index.html#download" class="ds-btn ds-btn-primary btn-deal">Start 14-Day Trial</a>
+            <a href="index.html#download" class="ds-btn ds-btn-primary btn-deal btn-bottom">Start 14-Day Trial</a>
         </div>
 
         <!-- Deal 2: 60% Off Lifetime -->
         <div class="deal-card deal-lifetime">
-            <div class="deal-icon">⭐</div>
-            <span class="deal-label">Lifetime Deal</span>
-            <h2>60% Off Lifetime</h2>
-            <div class="deal-value">~£36</div>
-            <p class="deal-sub">was £89.99 — save £54 with code below</p>
-            <p class="deal-desc">
-                One-time payment. Pro forever. Enter the code at checkout in the app under <strong>Upgrade → Lifetime</strong>.
-            </p>
+            <div class="deal-top">
+                <div class="deal-icon">⭐</div>
+                <span class="deal-label">Lifetime Deal</span>
+                <h2>60% Off Lifetime</h2>
+                <div class="deal-value">~£36</div>
+                <p class="deal-sub">was £89.99 — save £54 with code below</p>
+                <p class="deal-desc">
+                    One-time payment. Pro forever. Enter the code at checkout in the app.
+                </p>
+            </div>
             <div class="promo-code-block">
                 <span class="promo-code-text" id="promo-code">LTLAUNCHPROMO</span>
                 <button class="copy-btn" id="copy-btn" onclick="copyCode()">Copy</button>
             </div>
+            <a href="https://apps.apple.com/redeem?ctx=offercodes&id=6754508580&code=LTLAUNCHPROMO" target="_blank" rel="noopener noreferrer" class="ds-btn ds-btn-primary btn-deal btn-lifetime">Redeem on iOS / Mac</a>
             <p class="deal-fine">Expires 14 Sep 2026</p>
             <p class="deal-android">
                 <strong>Android users:</strong> The discount is applied automatically at checkout — no code needed.
             </p>
-            <a href="index.html#download" class="ds-btn ds-btn-primary btn-deal btn-lifetime">Get FluidCast</a>
+            <a href="index.html#download" class="ds-btn ds-btn-primary btn-deal btn-lifetime btn-bottom">Get FluidCast</a>
         </div>
 
     </div>
