@@ -127,6 +127,7 @@
         .promo-code-text {
             font-family: var(--font-mono); font-weight: 600; font-size: 1.05rem;
             letter-spacing: 1.5px; color: var(--cyan-300);
+            text-decoration: none;
         }
         .copy-btn {
             background: var(--gradient-brand); color: #fff; border: none;
@@ -142,10 +143,11 @@
             background: rgba(255,255,255,0.04);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-md);
-            padding: 10px 12px; margin-bottom: 20px;
+            padding: 10px 12px; margin: 16px 0 20px;
         }
-        .deal-android strong { color: #fff; }
+        .deal-android strong { color: var(--fg1); }
         .btn-deal { margin-top: auto; width: 100%; }
+        .deal-card .btn-deal + .deal-android { margin-top: 12px; }
         .btn-lifetime { background: var(--gradient-violet); box-shadow: 0 8px 24px -6px rgba(91,107,224,0.5); }
         .btn-lifetime:hover { box-shadow: 0 14px 36px -8px rgba(91,107,224,0.6); }
         .giveaway-rules {
@@ -258,18 +260,25 @@
 <section class="deals">
     <div class="deals-grid">
 
-        <!-- Deal 1: 90-Day Free Trial -->
+        <!-- Deal 1: Pro Annual Offer -->
         <div class="deal-card deal-trial">
             <div class="deal-icon">🎙️</div>
             <span class="deal-label">Pro Annual</span>
-            <h2>90-Day Free Trial</h2>
-            <div class="deal-value">3 Months Free</div>
-            <p class="deal-sub">Pro Annual — no charge for 90 days</p>
+            <h2>Up to 35% Off First Year</h2>
+            <div class="deal-value">Save Up To 35%</div>
+            <p class="deal-sub">Pro Annual — up to 35% off your first year</p>
             <p class="deal-desc">
-                No code needed — trial is applied automatically at checkout.
-                Cancel before 90 days and pay nothing.
+                14-day trial included. Start your trial, then continue at the discounted first-year rate.
             </p>
-            <a href="index.html#download" class="ds-btn ds-btn-primary btn-deal">Get FluidCast Free</a>
+            <div class="promo-code-block">
+                <span class="promo-code-text" id="promo-code-annual">SUMMER2026</span>
+                <button class="copy-btn" id="copy-btn-annual" onclick="copyAnnualCode()">Copy</button>
+            </div>
+            <a href="https://apps.apple.com/redeem?ctx=offercodes&id=6754508580&code=SUMMER2026" target="_blank" rel="noopener noreferrer" class="ds-btn ds-btn-primary btn-deal">Redeem on iOS / Mac</a>
+            <p class="deal-android">
+                <strong>Android users:</strong> The discount is applied automatically at checkout — no code needed.
+            </p>
+            <a href="index.html#download" class="ds-btn ds-btn-primary btn-deal">Start 14-Day Trial</a>
         </div>
 
         <!-- Deal 2: 60% Off Lifetime -->
@@ -313,6 +322,19 @@
 </footer>
 
 <script>
+    function copyAnnualCode() {
+        const code = document.getElementById('promo-code-annual').textContent;
+        navigator.clipboard.writeText(code).then(function() {
+            const copyBtn = document.getElementById('copy-btn-annual');
+            copyBtn.textContent = 'Copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(function() {
+                copyBtn.textContent = 'Copy';
+                copyBtn.classList.remove('copied');
+            }, 1800);
+        });
+    }
+
     // Burger menu
     var burger = document.getElementById('burger-menu');
     var navLinks = document.getElementById('nav-links');
