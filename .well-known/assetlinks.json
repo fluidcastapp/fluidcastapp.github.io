@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.FluidCastApp.FluidCast",
+      "sha256_cert_fingerprints": [
+        "E8:8B:12:40:19:69:B6:36:B8:B8:03:71:DA:B4:BA:CA:FD:29:5B:5E:2D:50:83:F1:DB:47:CE:BD:16:62:2D:EA"
+      ]
+    }
+  }
+]
