@@ -13,18 +13,18 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FluidCast Offers: Get 50% off lifetime and 50% off your first year of annual membership. Limited time deals.">
-    <title>FluidCast – Offers & Events</title>
+    <meta name="description" content="Black Friday 2026 at FluidCast: 50% off Lifetime Pro or your first year of Pro Annual. Celebrate the 1.7.2 player update. Ends 30 November at 23:59 UK time.">
+    <title>FluidCast – Black Friday 2026 · 1.7.2</title>
     <!-- Social cards: Open Graph, Twitter/X -->
-    <meta property="og:title" content="FluidCast – Special Offers">
-    <meta property="og:description" content="FluidCast Offers: Get 50% off lifetime and 50% off your first year of annual membership. Limited time deals.">
+    <meta property="og:title" content="FluidCast – Black Friday 2026 · 1.7.2">
+    <meta property="og:description" content="Save 50% on Lifetime Pro or your first year of Pro Annual. Celebrate FluidCast 1.7.2. Ends 30 November 2026 at 23:59 UK time.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fluidcastapp.com/event.html">
     <meta property="og:image" content="https://fluidcastapp.com/images/smcard.jpg">
-    <meta property="og:image:alt" content="FluidCast — special offers banner">
+    <meta property="og:image:alt" content="FluidCast podcast app">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FluidCast – Special Offers">
-    <meta name="twitter:description" content="Get 50% off lifetime and 50% off your first year of annual membership.">
+    <meta name="twitter:title" content="FluidCast – Black Friday 2026 · 1.7.2">
+    <meta name="twitter:description" content="Black Friday savings and the FluidCast 1.7.2 player update. Save 50% on Lifetime Pro or your first Annual year through 30 November 2026.">
     <meta name="twitter:image" content="https://fluidcastapp.com/images/smcard.jpg">
     <link rel="image_src" href="https://fluidcastapp.com/images/smcard.jpg">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -67,6 +67,15 @@
             letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 14px;
         }
         .hero p { font-size: 1.15rem; color: var(--fg2); }
+        .hero .offer-deadline { font-size: 0.95rem; margin-top: 16px; }
+        .offer-terms { max-width: 760px; margin: 28px auto 0; text-align: center; color: var(--fg3); font-size: 13px; line-height: 1.7; }
+        .offer-code { font-family: var(--font-mono); color: var(--cyan-300); font-weight: 600; overflow-wrap: anywhere; }
+        .release { padding: 64px 24px; background: var(--bg); }
+        .release-inner { max-width: 760px; margin: 0 auto; }
+        .release h2 { font-size: clamp(1.65rem, 4vw, 2.2rem); margin-bottom: 18px; }
+        .release p, .release li { color: var(--fg2); line-height: 1.7; }
+        .release ul { padding-left: 22px; margin: 20px 0; }
+        .release li { margin: 10px 0; }
 
         .deals {
             background:
@@ -254,13 +263,14 @@
     <div class="glow-cyan"></div>
     <div class="glow-blue"></div>
     <div class="hero-inner">
-        <div class="hero-badge">Special Offers</div>
-        <h1>50% Off Annual & Lifetime</h1>
-        <p>Limited time offers on Pro membership plans. Expires October 5th.</p>
+        <div class="hero-badge">Black Friday 2026 · FluidCast 1.7.2</div>
+        <h1 id="campaign-title">50% Off Annual & Lifetime</h1>
+        <p id="campaign-intro">Black Friday savings. A fresh way to listen.</p>
+        <p class="offer-deadline" id="campaign-deadline">Offers run from <time datetime="2026-11-05">5 November</time> until <time datetime="2026-11-30T23:59:00Z">30 November 2026 at 23:59 UK time</time>.</p>
     </div>
 </section>
 
-<section class="deals">
+<section class="deals" id="campaign-offers">
     <div class="deals-grid">
 
         <!-- Deal 1: Pro Annual 50% Off -->
@@ -276,15 +286,15 @@
             </div>
             <div class="deal-fine"><strong>How to redeem:</strong></div>
             <p class="deal-android" style="margin: 12px 0;">
-                <strong>Android:</strong> Discount applied automatically at checkout — no code needed.
+                <strong>Android:</strong> Discount applied automatically at checkout for eligible users — no code needed.
             </p>
             <p class="deal-android" style="margin: 12px 0;">
-                <strong>iOS:</strong> Discount applied automatically at checkout — no code needed.
+                <strong>iOS:</strong> Discount applied automatically at checkout for eligible users — no code needed.
             </p>
             <p class="deal-android" style="margin: 12px 0;">
-                <strong>Windows & Linux:</strong> Use code <span style="font-family: var(--font-mono); color: var(--cyan-300); font-weight: 600;">27HP</span> at checkout.
+                <strong>Windows & Linux:</strong> Use code <span class="offer-code">BLACKFRIDAY2026</span> at checkout.
             </p>
-            <a href="index.html#download" class="ds-btn ds-btn-primary btn-deal btn-bottom">Get Pro Now</a>
+            <a href="index.html#download" class="ds-btn ds-btn-primary btn-deal btn-bottom">Get Pro Annual</a>
         </div>
 
         <!-- Deal 2: Lifetime 50% Off -->
@@ -300,17 +310,33 @@
             </div>
             <div class="deal-fine"><strong>How to redeem:</strong></div>
             <p class="deal-android" style="margin: 12px 0;">
-                <strong>Android:</strong> Discount applied automatically at checkout — no code needed.
+                <strong>Android:</strong> Discount applied automatically at checkout for eligible users — no code needed.
             </p>
             <p class="deal-android" style="margin: 12px 0;">
-                <strong>iOS:</strong> Use code <span style="font-family: var(--font-mono); color: var(--cyan-300); font-weight: 600;">27HPLT</span>
+                <strong>iOS:</strong> Use code <span class="offer-code">BLACKFRIDAY2026LT</span> when redeeming the Lifetime offer. <a href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6754508580&amp;code=BLACKFRIDAY2026LT" rel="noopener">Redeem on iOS</a>.
             </p>
             <p class="deal-android" style="margin: 12px 0;">
-                <strong>Windows & Linux:</strong> Use code <span style="font-family: var(--font-mono); color: var(--cyan-300); font-weight: 600;">27HP</span> at checkout.
+                <strong>Windows & Linux:</strong> Use code <span class="offer-code">BLACKFRIDAY2026</span> at checkout.
             </p>
             <a href="index.html#download" class="ds-btn ds-btn-primary btn-deal btn-lifetime btn-bottom">Get Lifetime Pro</a>
         </div>
 
+    </div>
+    <p class="offer-terms">Discounts are subject to eligibility and availability on each platform. Pro Annual renews at the regular annual price after the discounted first year unless cancelled. Lifetime Pro is a one-time purchase. Local pricing and rounding may vary. Confirm the final price in your store or checkout before purchasing.</p>
+</section>
+
+<section class="release" aria-labelledby="release-title">
+    <div class="release-inner">
+        <div class="hero-badge">iPhone, iPad & Mac</div>
+        <h2 id="release-title">Meet FluidCast 1.7.2</h2>
+        <p>A redesigned player brings colours from your podcast artwork and easier access to episode information.</p>
+        <ul>
+            <li>Move between Player, Overview, Transcript and AI Analysis on iPhone, with improved wide layouts for iPhone Duo and iPad and fullscreen playback on Mac.</li>
+            <li>Generate chapters from episode transcripts with Pro, then jump straight to the topics you want. Chapter boundaries appear on the playback timeline.</li>
+            <li>Continue Listening brings your last episode to the front of your library.</li>
+            <li>Performance improvements and bug fixes make everyday listening smoother.</li>
+        </ul>
+        <p class="deal-fine">AI chapter generation is optional and requires Pro and a supported Apple Intelligence device with Apple Intelligence enabled. Availability depends on device, language and processing settings. Publisher chapters take priority. AI results may be inaccurate.</p>
     </div>
 </section>
 
@@ -447,6 +473,30 @@
         updateIcon();
       })();
     </script>
+
+<script>
+    // Keep the page accurate after the sale without requiring another HTML edit.
+    (function() {
+        const end = Date.parse('2026-11-30T23:59:00Z');
+        function updateCampaign() {
+            if (Date.now() < end) return;
+            document.getElementById('campaign-offers').hidden = true;
+            document.getElementById('campaign-deadline').hidden = true;
+            document.getElementById('campaign-title').textContent = 'Black Friday 2026 has ended';
+            document.getElementById('campaign-intro').textContent = 'Discover what is new in FluidCast 1.7.2 below.';
+            document.title = 'FluidCast - Black Friday 2026 has ended';
+            const description = 'The FluidCast Black Friday 2026 promotion has ended. Explore the redesigned player and the latest features in FluidCast 1.7.2.';
+            for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
+                document.querySelector(selector).content = description;
+            }
+            for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) {
+                document.querySelector(selector).content = document.title;
+            }
+        }
+        updateCampaign();
+        setInterval(updateCampaign, 30000);
+    })();
+</script>
 
 </body>
 </html>
