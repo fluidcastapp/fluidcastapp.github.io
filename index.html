@@ -370,6 +370,13 @@
             height: 58px;
             max-width: 100%;
         }
+        .macpip-badge a {
+            display: inline-block;
+            line-height: 0;
+            max-width: 100%;
+            text-decoration: none;
+            vertical-align: top;
+        }
 
         /* ── Screenshot Modal ── */
         .screenshot-modal { display: none; position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,0.9); animation: fadeIn 0.3s; }
@@ -813,9 +820,7 @@
                 <a class="macpip-badge" href="https://ipip.fyi/apps/fluidcast?ref=badge">
                     <img src="https://ipip.fyi/badge/fluidcast.svg" alt="FluidCast on iPip" width="220" height="56" loading="lazy">
                 </a>
-                <a class="macpip-badge" href="https://macnative.io/apps/fluidcast?utm_source=macnative-badge&utm_medium=referral" target="_blank" rel="noopener">
-                    <img src="https://macnative.io/badge?kind=listed&theme=default&slug=fluidcast" alt="Listed on MacNative" width="212" height="58" />
-                </a>
+                <span class="macpip-badge"><a href="https://macnative.io/apps/fluidcast?utm_source=macnative-badge&utm_medium=referral" target="_blank" rel="noopener"><img src="https://macnative.io/badge?kind=listed&theme=default&slug=fluidcast" alt="Listed on MacNative" width="212" height="58" /></a></span>
             </div>
         </div>
     </section>
