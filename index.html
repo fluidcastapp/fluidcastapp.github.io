@@ -17,7 +17,7 @@
       });
     </script>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://macpip.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FluidCast - Your podcast experience, reimagined. Listen, sync, and enjoy podcasts across your devices.">
@@ -339,6 +339,33 @@
         }
         .download-picker:hover, .download-picker:focus { border-color: var(--cyan-500); outline: none; }
         .download-picker option { background: var(--surface); color: var(--fg); }
+        .macpip-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-top: 36px;
+        }
+        .macpip-label {
+            font-family: var(--font-mono);
+            font-size: 11.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--fg3);
+        }
+        .macpip-badge {
+            display: inline-block;
+            line-height: 0;
+            max-width: 100%;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .macpip-badge:hover { transform: scale(1.04); opacity: 0.92; }
+        .macpip-badge img {
+            display: block;
+            width: auto;
+            height: 58px;
+            max-width: 100%;
+        }
 
         /* ── Screenshot Modal ── */
         .screenshot-modal { display: none; position: fixed; inset: 0; z-index: 3000; background: rgba(0,0,0,0.9); animation: fadeIn 0.3s; }
@@ -773,6 +800,12 @@
                         <option value="linux">Linux — AppImage</option>
                     </select>
                 </div>
+            </div>
+            <div class="macpip-row">
+                <span class="macpip-label">Featured on</span>
+                <a class="macpip-badge" href="https://macpip.com/apps/fluidcast?ref=badge">
+                    <img src="https://macpip.com/badge/fluidcast.svg" height="58" alt="Listed on MacPip" loading="lazy">
+                </a>
             </div>
         </div>
     </section>
