@@ -455,10 +455,37 @@
             .bento { grid-template-columns: 1fr; }
             .feat-card.bento-lg { grid-column: span 1; }
         }
+
+        /* Cyber Monday 2026 — remove this block after 1 December 2026 */
+        .cm-banner {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(90deg, #1E4FE0 0%, #1ABCD8 100%);
+            padding: 10px 20px;
+            font-size: 14.5px;
+            line-height: 1.45;
+            font-weight: 600;
+        }
+        .cm-banner strong { font-weight: 800; }
+        .cm-banner[hidden] { display: none !important; }
+        body.has-cm-banner .hero { padding-top: 188px; }
+        @media (max-width: 900px) {
+            body.has-cm-banner .hero { padding-top: 176px; }
+        }
+        @media (max-width: 600px) {
+            body.has-cm-banner .hero { padding-top: 220px; }
+        }
     </style>
     <script type="module" src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"></script>
 </head>
-<body>
+<body class="has-cm-banner">
     <!-- Easter Sale Popup -->
     <div id="easter-popup">
         <div class="easter-popup-content">
@@ -537,6 +564,11 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Cyber Monday 2026 — remove this banner after 1 December 2026 -->
+    <a class="cm-banner" id="cm-banner" href="cyber-monday.html">
+        <strong>Cyber Monday:</strong> 60% off FluidCast Pro — first year of Annual and Lifetime. All Cyber Monday, wherever you are. Ends Tuesday 1 December 2026 at 11:59 GMT (UTC).
+    </a>
 
     <!-- Hero -->
     <section class="hero">
@@ -1068,5 +1100,19 @@
         </div>
       </div>
     </div>
+    <script>
+        // Hide the Cyber Monday banner once the sale ends (11:59 GMT, 1 December 2026).
+        (function () {
+            var end = Date.parse('2026-12-01T11:59:00Z');
+            var banner = document.getElementById('cm-banner');
+            function updateBanner() {
+                if (!banner || Date.now() < end) return;
+                banner.hidden = true;
+                document.body.classList.remove('has-cm-banner');
+            }
+            updateBanner();
+            setInterval(updateBanner, 30000);
+        })();
+    </script>
 </body>
 </html>
