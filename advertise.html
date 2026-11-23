@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Cookie Consent Script (must load before GA) -->
+    <script src="cookies.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-80XZVYXSQX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-80XZVYXSQX', {
+        'anonymize_ip': true,
+        'allow_google_signals': false
+      });
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Promote your podcast inside FluidCast. We're open to paid placements and cross-promotion. Get in touch at info@fluidcastapp.com.">
+    <title>FluidCast – Advertise your podcast</title>
+    <meta property="og:title" content="FluidCast – Advertise your podcast">
+    <meta property="og:description" content="Promote your podcast inside FluidCast. We're open to paid placements and cross-promotion. Get in touch at info@fluidcastapp.com.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fluidcastapp.com/advertise.html">
+    <meta property="og:image" content="https://fluidcastapp.com/images/smcard.jpg">
+    <meta property="og:image:alt" content="FluidCast — podcast player screenshot">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FluidCast – Advertise your podcast">
+    <meta name="twitter:description" content="Promote your podcast inside FluidCast. We're open to paid placements and cross-promotion. Get in touch at info@fluidcastapp.com.">
+    <meta name="twitter:image" content="https://fluidcastapp.com/images/smcard.jpg">
+    <link rel="image_src" href="https://fluidcastapp.com/images/smcard.jpg">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="fluidcast-ds.css">
+    <script>
+      (function() {
+        const saved = localStorage.getItem('theme');
+        const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        let theme;
+
+        if (saved === 'system') {
+          theme = prefersLight ? 'light' : 'dark';
+        } else if (saved) {
+          theme = saved;
+        } else {
+          theme = prefersLight ? 'light' : 'dark';
+        }
+
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-theme-preference', saved || 'system');
+      })();
+    </script>
+    <style>
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-hero);
+            padding: 148px 24px 72px;
+            text-align: center;
+        }
+        .hero .glow-cyan {
+            position: absolute; top: -10%; right: -5%;
+            width: 60%; height: 80%;
+            background: radial-gradient(ellipse at 100% 0%, rgba(61,208,240,0.22), transparent 60%);
+            pointer-events: none;
+        }
+        .hero .glow-blue {
+            position: absolute; bottom: -15%; left: -8%;
+            width: 60%; height: 80%;
+            background: radial-gradient(ellipse at 0% 100%, rgba(30,79,224,0.32), transparent 60%);
+            pointer-events: none;
+        }
+        .hero-inner { position: relative; max-width: 680px; margin: 0 auto; }
+        .hero .ds-eyebrow { color: var(--cyan-300); margin-bottom: 16px; }
+        .hero h1 {
+            font-weight: 800;
+            font-size: clamp(2.1rem, 4.6vw, 3.2rem);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        .hero p {
+            font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+            color: var(--fg2);
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .advertise {
+            background:
+                radial-gradient(ellipse at 100% -10%, rgba(61,208,240,0.08), transparent 55%),
+                radial-gradient(ellipse at 0% 110%, rgba(30,79,224,0.12), transparent 55%),
+                var(--bg);
+            padding: 64px 24px 88px;
+        }
+        .advertise-card {
+            max-width: 720px;
+            margin: 0 auto;
+            background: var(--elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-card);
+            padding: 40px 40px 36px;
+        }
+        .advertise-card p {
+            color: var(--fg2);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .advertise-card ul {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+            margin: 22px 0 28px;
+        }
+        .advertise-card li {
+            color: var(--fg);
+            font-weight: 600;
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            background: rgba(61,208,240,0.06);
+            border: 1px solid var(--border-subtle);
+        }
+        .advertise-card li span {
+            display: block;
+            margin-top: 4px;
+            font-weight: 400;
+            color: var(--fg2);
+            font-size: 0.95rem;
+        }
+        .advertise-cta { margin-top: 8px; }
+        .advertise-note {
+            margin-top: 14px;
+            font-size: 0.92rem;
+            color: var(--fg3);
+        }
+        .advertise-note a { color: var(--cyan-400); }
+        .theme-toggle {
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            border: 1px solid var(--border-mid);
+            color: var(--fg);
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: background-color 0.2s, border-color 0.2s;
+            padding: 0;
+        }
+        .theme-toggle:hover {
+            background: var(--overlay);
+            border-color: var(--border-subtle);
+        }
+        @media (max-width: 600px) {
+            .hero { padding: 116px 20px 52px; }
+            .advertise { padding: 40px 16px 64px; }
+            .advertise-card { padding: 28px 20px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="ds-header">
+        <nav class="ds-nav">
+            <a href="index.html" class="ds-logo">
+                <img src="images/fluidcasticonweb.jpg" alt="FluidCast logo">
+                <span>FluidCast</span>
+            </a>
+            <button class="ds-burger" id="burger-menu" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="ds-nav-links" id="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#pricing">Pro</a></li>
+                <li><a href="https://medium.com/@fluidcastapp" target="_blank" rel="noopener noreferrer">News</a></li>
+                <li><a href="https://www.reddit.com/r/fluidcast" target="_blank" rel="noopener noreferrer">Reddit</a></li>
+                <li><a href="/web">Web Player</a></li>
+                <li><a href="index.html#download" class="ds-nav-cta">Download</a></li>
+                <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme"></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="glow-cyan"></div>
+            <div class="glow-blue"></div>
+            <div class="hero-inner">
+                <div class="ds-eyebrow">For podcasters</div>
+                <h1>Advertise your podcast</h1>
+                <p>Promote your show to listeners inside FluidCast. We're currently open to both paid placements and cross-promotion.</p>
+            </div>
+        </section>
+
+        <section class="advertise">
+            <div class="advertise-card">
+                <p>FluidCast is a podcast player for iPhone, iPad, Mac, Android, Windows, and Linux. If you make a show, you can reach people while they browse and listen in the app.</p>
+                <ul>
+                    <li>Paid placements<span>Sponsor a placement inside FluidCast and tell listeners about your show.</span></li>
+                    <li>Cross-promotion<span>Swap promotion with FluidCast so both audiences hear about the other.</span></li>
+                </ul>
+                <p>Tell us about your podcast and which option you'd like. We'll reply from the same address.</p>
+                <a class="ds-btn ds-btn-primary advertise-cta" href="mailto:info@fluidcastapp.com">Email info@fluidcastapp.com</a>
+                <p class="advertise-note">Or write to <a href="mailto:info@fluidcastapp.com">info@fluidcastapp.com</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="ds-footer">
+        <div class="ds-footer-inner">
+            <div class="ds-footer-brand">
+                <img src="images/fluidcasticonweb.jpg" alt="FluidCast logo">
+                <span>FluidCast</span>
+            </div>
+            <div class="ds-footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="refund.html">Refund Policy</a>
+                <a href="advertise.html" aria-current="page">Advertise</a>
+                <a href="index.html">Home</a>
+            </div>
+            <p class="ds-footer-copy">&copy; 2026 Joseph Bishop. All rights reserved.</p>
+            <p class="ds-footer-copy">Contact: <a href="mailto:info@fluidcastapp.com">info@fluidcastapp.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            const systemMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+
+            function getOSTheme() {
+                return systemMediaQuery.matches ? 'light' : 'dark';
+            }
+
+            function updateIcon() {
+                const preference = html.getAttribute('data-theme-preference');
+                if (preference === 'system') {
+                    toggle.textContent = '🌓';
+                } else if (preference === 'light') {
+                    toggle.textContent = '☀️';
+                } else {
+                    toggle.textContent = '🌙';
+                }
+                toggle.title = 'Theme: ' + (preference === 'system' ? 'System (auto)' : preference);
+            }
+
+            function applyTheme(preference) {
+                html.setAttribute('data-theme-preference', preference);
+                if (preference === 'system') {
+                    html.setAttribute('data-theme', getOSTheme());
+                    localStorage.removeItem('theme');
+                } else {
+                    html.setAttribute('data-theme', preference);
+                    localStorage.setItem('theme', preference);
+                }
+                updateIcon();
+            }
+
+            toggle.addEventListener('click', function() {
+                const current = html.getAttribute('data-theme-preference');
+                if (current === 'dark') applyTheme('light');
+                else if (current === 'light') applyTheme('system');
+                else applyTheme('dark');
+            });
+
+            systemMediaQuery.addEventListener('change', function(e) {
+                if (html.getAttribute('data-theme-preference') === 'system') {
+                    html.setAttribute('data-theme', e.matches ? 'light' : 'dark');
+                }
+            });
+
+            updateIcon();
+        })();
+
+        (function() {
+            const burgerMenu = document.getElementById('burger-menu');
+            const navLinks = document.getElementById('nav-links');
+            burgerMenu.addEventListener('click', function() {
+                burgerMenu.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(function(item) {
+                item.addEventListener('click', function() {
+                    burgerMenu.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
