@@ -101,14 +101,25 @@
             padding: 64px 24px 88px;
         }
         .advertise-card {
-            max-width: 720px;
+            max-width: 980px;
             margin: 0 auto;
             background: var(--elevated);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-xl);
             box-shadow: var(--shadow-card);
             padding: 40px 40px 36px;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 250px;
+            grid-template-areas:
+                "lead shot"
+                "list shot"
+                "follow shot";
+            column-gap: 40px;
+            align-items: center;
         }
+        .advertise-lead { grid-area: lead; }
+        .advertise-card ul { grid-area: list; }
+        .advertise-follow { grid-area: follow; }
         .advertise-card p {
             color: var(--fg2);
             font-size: 1.05rem;
@@ -143,6 +154,34 @@
             color: var(--fg3);
         }
         .advertise-note a { color: var(--cyan-400); }
+        .sponsored-shot {
+            grid-area: shot;
+            margin: 0;
+        }
+        .sponsored-device {
+            width: 230px;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 36px;
+            background: linear-gradient(165deg, #1c2840 0%, #0b1220 100%);
+            border: 1px solid var(--border-mid);
+            box-shadow: 0 30px 60px -24px rgba(0,0,0,0.75), inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+        .sponsored-device img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 295 / 640;
+            border-radius: 26px;
+        }
+        .sponsored-shot figcaption {
+            margin-top: 14px;
+            font-size: 0.88rem;
+            line-height: 1.45;
+            color: var(--fg3);
+            text-align: center;
+        }
         .theme-toggle {
             appearance: none;
             -webkit-appearance: none;
@@ -163,6 +202,19 @@
         .theme-toggle:hover {
             background: var(--overlay);
             border-color: var(--border-subtle);
+        }
+        @media (max-width: 760px) {
+            .advertise-card {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "lead"
+                    "list"
+                    "shot"
+                    "follow";
+                row-gap: 8px;
+            }
+            .sponsored-shot { margin: 8px auto 12px; }
+            .sponsored-device { width: min(230px, 72vw); }
         }
         @media (max-width: 600px) {
             .hero { padding: 116px 20px 52px; }
@@ -206,14 +258,22 @@
 
         <section class="advertise">
             <div class="advertise-card">
-                <p>FluidCast is a podcast player for iPhone, iPad, Mac, Android, Windows, and Linux. If you make a show, you can reach people while they browse and listen in the app.</p>
+                <p class="advertise-lead">FluidCast is a podcast player for iPhone, iPad, Mac, Android, Windows, and Linux. If you make a show, you can reach people while they browse and listen in the app.</p>
                 <ul>
                     <li>Paid placements<span>Sponsor a placement inside FluidCast and tell listeners about your show.</span></li>
                     <li>Cross-promotion<span>Swap promotion with FluidCast so both audiences hear about the other.</span></li>
                 </ul>
-                <p>Tell us about your podcast and which option you'd like. We'll reply from the same address.</p>
-                <a class="ds-btn ds-btn-primary advertise-cta" href="mailto:info@fluidcastapp.com">Email info@fluidcastapp.com</a>
-                <p class="advertise-note">Or write to <a href="mailto:info@fluidcastapp.com">info@fluidcastapp.com</a>.</p>
+                <figure class="sponsored-shot">
+                    <div class="sponsored-device">
+                        <img src="images/sponsored-search.webp" width="295" height="640" alt="FluidCast Search tab on an iPhone. Red circles mark a Sponsored banner at the top and a Sponsored tile in the Podcasts row.">
+                    </div>
+                    <figcaption>How a sponsored show appears in FluidCast's Search tab.</figcaption>
+                </figure>
+                <div class="advertise-follow">
+                    <p>Tell us about your podcast and which option you'd like. We'll reply from the same address.</p>
+                    <a class="ds-btn ds-btn-primary advertise-cta" href="mailto:info@fluidcastapp.com">Email info@fluidcastapp.com</a>
+                    <p class="advertise-note">Or write to <a href="mailto:info@fluidcastapp.com">info@fluidcastapp.com</a>.</p>
+                </div>
             </div>
         </section>
     </main>
